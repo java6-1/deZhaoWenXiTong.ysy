@@ -46,7 +46,7 @@
     select 
     <include refid="Base_Column_List" />
     from qxkz
- 	WHERE `staffID` = #{qxid,jdbcType=INTEGER} 
+ 	WHERE `staffID` = #{staffID,jdbcType=INTEGER} 
   </select>
   
   
