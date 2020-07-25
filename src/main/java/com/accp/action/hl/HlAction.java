@@ -25,4 +25,6 @@ public class HlAction {
 		List<Chexing> list = chexingBiz.select();
 		return  list;
 	}
+	
+	
 }

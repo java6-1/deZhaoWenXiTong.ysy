@@ -38,6 +38,14 @@ public class staffAction {
 		}
 		return map;
 	}
+	
+	
+	// 获取用户名
+		@PostMapping("/denglu2")
+		public Staff delu2(HttpSession session) {
+			Staff us  =(Staff) session.getAttribute("user");
+			return us;
+		}
 
 	// 手机号登录也验证
 	@GetMapping("/denglu2/{phone}")
