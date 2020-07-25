@@ -17,13 +17,13 @@ import com.accp.pojo.Chexing;
 @RestController
 @RequestMapping("/api/hl") // 命名空间
 public class HlAction {
-	
 	@Autowired
 	private ChexingBiz chexingBiz;
 	
 	@GetMapping("/selec")
 	public List<Chexing> select() {	
 		List<Chexing> list = chexingBiz.select();
+		System.out.println("1213");
 		System.out.println("1213");
 		return  list;
 	}
