@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yj.staffBiz;
-import com.accp.dao.StaffMapper;
 import com.accp.pojo.Staff;
 
 import com.accp.utils.PhoneCode;
@@ -24,7 +23,7 @@ public class staffAction {
 	@Autowired
 	private staffBiz staffmapper;
 
-	// 账号密码登录
+	// 账号密码登录yangj
 	@PostMapping("/denglu1")
 	public Map<String, Object> delu1(String name, String password, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
