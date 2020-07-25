@@ -24,6 +24,7 @@ public class HlAction {
 	@GetMapping("/selec")
 	public List<Chexing> select() {	
 		List<Chexing> list = chexingBiz.select();
+		System.out.println("1213");
 		return  list;
 	}
 }
