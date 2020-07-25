@@ -38,7 +38,6 @@ public class staffAction {
 		}
 		return map;
 	}
-
 	// 手机号登录也验证
 	@GetMapping("/denglu2/{phone}")
 	public Map<String, Object> delu2(@PathVariable String phone, HttpSession session) {
