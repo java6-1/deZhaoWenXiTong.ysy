@@ -32,17 +32,26 @@
     qxID, staffID, postName, zzjg, gwdy, lzdj, txml, jgxj, bzjg, wqcl, fdjpp, cxda, wxxmId, 
     sqzl, ghdwId, khzl, clzl, jfzs, hycx, jszx, wxjc, jgjy, bz1, bz2, bz3
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+
+  <!-- 查询全部 -->
+  <select id="select" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from qxkz
-    where qxID = #{qxid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from qxkz
-    where qxID = #{qxid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.accp.pojo.Qxkz" >
+
+
+  <!--根据ID查询 -->
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from qxkz
+ 	WHERE `staffID` = #{qxid,jdbcType=INTEGER} 
+  </select>
+  
+  
+   <!--   新增员工会员 -->
+   <insert id="insert" parameterType="com.accp.pojo.Qxkz" >
     insert into qxkz (qxID, staffID, postName, 
       zzjg, gwdy, lzdj, txml, 
       jgxj, bzjg, wqcl, fdjpp, 
@@ -60,163 +69,7 @@
       #{jgjy,jdbcType=INTEGER}, #{bz1,jdbcType=INTEGER}, #{bz2,jdbcType=INTEGER}, #{bz3,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.Qxkz" >
-    insert into qxkz
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="qxid != null" >
-        qxID,
-      </if>
-      <if test="staffid != null" >
-        staffID,
-      </if>
-      <if test="postname != null" >
-        postName,
-      </if>
-      <if test="zzjg != null" >
-        zzjg,
-      </if>
-      <if test="gwdy != null" >
-        gwdy,
-      </if>
-      <if test="lzdj != null" >
-        lzdj,
-      </if>
-      <if test="txml != null" >
-        txml,
-      </if>
-      <if test="jgxj != null" >
-        jgxj,
-      </if>
-      <if test="bzjg != null" >
-        bzjg,
-      </if>
-      <if test="wqcl != null" >
-        wqcl,
-      </if>
-      <if test="fdjpp != null" >
-        fdjpp,
-      </if>
-      <if test="cxda != null" >
-        cxda,
-      </if>
-      <if test="wxxmid != null" >
-        wxxmId,
-      </if>
-      <if test="sqzl != null" >
-        sqzl,
-      </if>
-      <if test="ghdwid != null" >
-        ghdwId,
-      </if>
-      <if test="khzl != null" >
-        khzl,
-      </if>
-      <if test="clzl != null" >
-        clzl,
-      </if>
-      <if test="jfzs != null" >
-        jfzs,
-      </if>
-      <if test="hycx != null" >
-        hycx,
-      </if>
-      <if test="jszx != null" >
-        jszx,
-      </if>
-      <if test="wxjc != null" >
-        wxjc,
-      </if>
-      <if test="jgjy != null" >
-        jgjy,
-      </if>
-      <if test="bz1 != null" >
-        bz1,
-      </if>
-      <if test="bz2 != null" >
-        bz2,
-      </if>
-      <if test="bz3 != null" >
-        bz3,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="qxid != null" >
-        #{qxid,jdbcType=INTEGER},
-      </if>
-      <if test="staffid != null" >
-        #{staffid,jdbcType=INTEGER},
-      </if>
-      <if test="postname != null" >
-        #{postname,jdbcType=VARCHAR},
-      </if>
-      <if test="zzjg != null" >
-        #{zzjg,jdbcType=INTEGER},
-      </if>
-      <if test="gwdy != null" >
-        #{gwdy,jdbcType=INTEGER},
-      </if>
-      <if test="lzdj != null" >
-        #{lzdj,jdbcType=INTEGER},
-      </if>
-      <if test="txml != null" >
-        #{txml,jdbcType=INTEGER},
-      </if>
-      <if test="jgxj != null" >
-        #{jgxj,jdbcType=INTEGER},
-      </if>
-      <if test="bzjg != null" >
-        #{bzjg,jdbcType=INTEGER},
-      </if>
-      <if test="wqcl != null" >
-        #{wqcl,jdbcType=INTEGER},
-      </if>
-      <if test="fdjpp != null" >
-        #{fdjpp,jdbcType=INTEGER},
-      </if>
-      <if test="cxda != null" >
-        #{cxda,jdbcType=INTEGER},
-      </if>
-      <if test="wxxmid != null" >
-        #{wxxmid,jdbcType=INTEGER},
-      </if>
-      <if test="sqzl != null" >
-        #{sqzl,jdbcType=INTEGER},
-      </if>
-      <if test="ghdwid != null" >
-        #{ghdwid,jdbcType=INTEGER},
-      </if>
-      <if test="khzl != null" >
-        #{khzl,jdbcType=INTEGER},
-      </if>
-      <if test="clzl != null" >
-        #{clzl,jdbcType=INTEGER},
-      </if>
-      <if test="jfzs != null" >
-        #{jfzs,jdbcType=INTEGER},
-      </if>
-      <if test="hycx != null" >
-        #{hycx,jdbcType=INTEGER},
-      </if>
-      <if test="jszx != null" >
-        #{jszx,jdbcType=INTEGER},
-      </if>
-      <if test="wxjc != null" >
-        #{wxjc,jdbcType=INTEGER},
-      </if>
-      <if test="jgjy != null" >
-        #{jgjy,jdbcType=INTEGER},
-      </if>
-      <if test="bz1 != null" >
-        #{bz1,jdbcType=INTEGER},
-      </if>
-      <if test="bz2 != null" >
-        #{bz2,jdbcType=INTEGER},
-      </if>
-      <if test="bz3 != null" >
-        #{bz3,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
+  <!--   修改会员权限 -->
   <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Qxkz" >
     update qxkz
     <set >
@@ -293,34 +146,6 @@
         bz3 = #{bz3,jdbcType=INTEGER},
       </if>
     </set>
-    where qxID = #{qxid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Qxkz" >
-    update qxkz
-    set staffID = #{staffid,jdbcType=INTEGER},
-      postName = #{postname,jdbcType=VARCHAR},
-      zzjg = #{zzjg,jdbcType=INTEGER},
-      gwdy = #{gwdy,jdbcType=INTEGER},
-      lzdj = #{lzdj,jdbcType=INTEGER},
-      txml = #{txml,jdbcType=INTEGER},
-      jgxj = #{jgxj,jdbcType=INTEGER},
-      bzjg = #{bzjg,jdbcType=INTEGER},
-      wqcl = #{wqcl,jdbcType=INTEGER},
-      fdjpp = #{fdjpp,jdbcType=INTEGER},
-      cxda = #{cxda,jdbcType=INTEGER},
-      wxxmId = #{wxxmid,jdbcType=INTEGER},
-      sqzl = #{sqzl,jdbcType=INTEGER},
-      ghdwId = #{ghdwid,jdbcType=INTEGER},
-      khzl = #{khzl,jdbcType=INTEGER},
-      clzl = #{clzl,jdbcType=INTEGER},
-      jfzs = #{jfzs,jdbcType=INTEGER},
-      hycx = #{hycx,jdbcType=INTEGER},
-      jszx = #{jszx,jdbcType=INTEGER},
-      wxjc = #{wxjc,jdbcType=INTEGER},
-      jgjy = #{jgjy,jdbcType=INTEGER},
-      bz1 = #{bz1,jdbcType=INTEGER},
-      bz2 = #{bz2,jdbcType=INTEGER},
-      bz3 = #{bz3,jdbcType=INTEGER}
     where qxID = #{qxid,jdbcType=INTEGER}
   </update>
 </mapper>
