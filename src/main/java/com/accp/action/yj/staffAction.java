@@ -23,7 +23,7 @@ public class staffAction {
 	@Autowired
 	private staffBiz staffmapper;
 
-	// 账号密码登录yangj
+	// 账号密码登录
 	@PostMapping("/denglu1")
 	public Map<String, Object> delu1(String name, String password, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
