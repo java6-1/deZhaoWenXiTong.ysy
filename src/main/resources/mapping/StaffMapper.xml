@@ -30,6 +30,14 @@
     <result column="bz2" property="bz2" jdbcType="INTEGER" />
     <result column="bz3" property="bz3" jdbcType="INTEGER" />
   </resultMap>
+  <!-- 查询全部人员 -->
+  <select id="selec" resultType="com.accp.pojo.Staff">
+  	SELECT *FROM `staff` WHERE 1=1 
+  	 <if test="staffname != null and staffname != ''" >
+          	AND `staffName` = #{staffname}
+     </if>
+
+  </select>
   <!-- 密码验证登录 -->
   <select id="selectuser" resultType="com.accp.pojo.Staff">
   	SELECT *FROM `staff` WHERE `staffAccount`=#{staffAccount} AND `staffPawss`=#{staffPawss}
