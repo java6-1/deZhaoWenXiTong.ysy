@@ -250,4 +250,15 @@ public class Qxkz {
     public void setBz3(Integer bz3) {
         this.bz3 = bz3;
     }
+
+	@Override
+	public String toString() {
+		return "Qxkz [qxid=" + qxid + ", staffid=" + staffid + ", postname=" + postname + ", zzjg=" + zzjg + ", gwdy="
+				+ gwdy + ", lzdj=" + lzdj + ", txml=" + txml + ", jgxj=" + jgxj + ", bzjg=" + bzjg + ", wqcl=" + wqcl
+				+ ", fdjpp=" + fdjpp + ", cxda=" + cxda + ", wxxmid=" + wxxmid + ", sqzl=" + sqzl + ", ghdwid=" + ghdwid
+				+ ", khzl=" + khzl + ", clzl=" + clzl + ", jfzs=" + jfzs + ", hycx=" + hycx + ", jszx=" + jszx
+				+ ", wxjc=" + wxjc + ", jgjy=" + jgjy + ", bz1=" + bz1 + ", bz2=" + bz2 + ", bz3=" + bz3 + "]";
+	}
+    
+    
 }
