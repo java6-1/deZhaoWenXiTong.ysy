@@ -28,7 +28,7 @@ public class PostAction {
 	//分页查询全部
 	@GetMapping("queryPost/{pageNum}/{pageSize}")
 	public PageInfo<Post> queryByAuction(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
-		System.out.println("进入");
+		System.out.println("进入yixia1");
 		return postBiz.queryByPost(pageNum, pageSize);
 	}
 	
