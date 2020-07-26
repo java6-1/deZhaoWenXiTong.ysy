@@ -1,17 +1,23 @@
 package com.accp.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.Qxkz;
 
 public interface QxkzMapper {
-    int deleteByPrimaryKey(Integer qxid);
+	
+	/* 查询全部 */
+	List<Qxkz> select();
+	
+	/* 根据ID查询 */
+	Qxkz selectByPrimaryKey(@Param("staffID")Integer staffID);
+	
+	/* 新增员工会员 */
+	int insert(@Param("record")Qxkz record);
+	
+	/* 修改会员权限 */
+	int updateByPrimaryKeySelective(@Param("record")Qxkz record);
 
-    int insert(Qxkz record);
-
-    int insertSelective(Qxkz record);
-
-    Qxkz selectByPrimaryKey(Integer qxid);
-
-    int updateByPrimaryKeySelective(Qxkz record);
-
-    int updateByPrimaryKey(Qxkz record);
 }

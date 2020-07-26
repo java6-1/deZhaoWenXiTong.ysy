@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yj.staffBiz;
-import com.accp.dao.StaffMapper;
 import com.accp.pojo.Staff;
 
 import com.accp.utils.PhoneCode;
@@ -39,6 +38,14 @@ public class staffAction {
 		}
 		return map;
 	}
+
+	// 获取用户名
+		@PostMapping("/denglu2")
+		public Staff delu2(HttpSession session) {
+			Staff us  =(Staff) session.getAttribute("user");
+			return us;
+		}
+
 
 	// 手机号登录也验证
 	@GetMapping("/denglu2/{phone}")

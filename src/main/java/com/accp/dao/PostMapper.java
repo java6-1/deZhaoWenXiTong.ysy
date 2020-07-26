@@ -29,4 +29,6 @@ public interface PostMapper {
 	//删除
 	@Delete("delete from post where postid=#{postid}")
 	int deleteByid(Integer postid);
+	
+	//s
 }
