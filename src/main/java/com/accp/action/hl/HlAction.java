@@ -85,9 +85,7 @@ public class HlAction {
 	/**修改会员权限**/
 	@PutMapping("/updateByPrimaryKeySelective")
 	public Map<String, Object>  updateByPrimaryKeySelective(@RequestBody Qxkz record) {	
-		System.out.println(record.getStaffid());
-		int count = qxkzBiz.updateByPrimaryKeySelective(record);
-
+		qxkzBiz.updateByPrimaryKeySelective(record);
 		Map<String, Object> message = new HashMap<String, Object>();
 		message.put("code", "200");
 		message.put("msg", "ok");

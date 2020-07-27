@@ -16,7 +16,15 @@
   <sql id="Base_Column_List" >
     waiqinID, bzId, jiescph, waiqinpp, waiqinlc, waiqinbm, zt, bz1, bz2, bz3
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from waiqin
+    where waiqinID = #{waiqinid,jdbcType=INTEGER}
+  </select>
+  
+<!--   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from waiqin
@@ -148,5 +156,5 @@
       bz2 = #{bz2,jdbcType=INTEGER},
       bz3 = #{bz3,jdbcType=INTEGER}
     where waiqinID = #{waiqinid,jdbcType=INTEGER}
-  </update>
+  </update> -->
 </mapper>
