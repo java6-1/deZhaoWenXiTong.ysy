@@ -19,9 +19,7 @@ public interface StaffMapper {
     int updateByPrimaryKeySelective(Staff record);
    
     int updateByPrimaryKey(Staff record);
-    //yj
     Staff selectuser(@Param("staffAccount")String staffAccount,@Param("staffPawss")String staffPawss);
-    //yj
     Staff selectuserPhone(@Param("staff")String staff);
     
     //查询全部wlw
