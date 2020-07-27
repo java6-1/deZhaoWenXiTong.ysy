@@ -28,8 +28,15 @@ public class ActionZyw {
 		return 1;
 	}
 	
+	@PostMapping("/upda")
+	public Object upda(Clpp clpp) {
+	    biz.upda(clpp);
+		return 1;
+	}
+	
 	@GetMapping("/sc")
 	public Object sc(Integer ppid) {
-		return biz.del(ppid);
+		 biz.del(ppid);
+		return 1;
 	}
 }

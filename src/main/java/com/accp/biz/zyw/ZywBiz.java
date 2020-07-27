@@ -25,6 +25,9 @@ public class ZywBiz {
 	public int ins(Clpp clpp) {
 		return clppmapper.insertSelective(clpp);
 	}
+	public int upda(Clpp clpp) {
+		return clppmapper.updateByPrimaryKeySelective(clpp);
+	}
 	public int del(Integer clppid) {
 		return clppmapper.deleteByPrimaryKey(clppid);
 	}
