@@ -69,8 +69,9 @@ public class HlAction {
 	/**根据ID查询**/
 	@GetMapping("/selectByPrimaryKey/{staffID}")
 	public Qxkz selectByPrimaryKey(@PathVariable Integer staffID) {	
+		System.out.println(staffID);
 		Qxkz qxkz = qxkzBiz.selectByPrimaryKey(staffID);
-		System.out.println(qxkz);
+		System.out.println(qxkz+"11111");
 		return  qxkz;
 	}
 	

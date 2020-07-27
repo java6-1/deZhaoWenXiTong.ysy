@@ -56,8 +56,20 @@ public class Staff {
     private Integer bz2;
 
     private Integer bz3;
+    
+    private String sectionname;
+    
+    
 
-    public Integer getStaffid() {
+    public String getSectionname() {
+		return sectionname;
+	}
+
+	public void setSectionname(String sectionname) {
+		this.sectionname = sectionname;
+	}
+
+	public Integer getStaffid() {
         return staffid;
     }
 
