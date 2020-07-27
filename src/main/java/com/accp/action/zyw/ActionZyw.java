@@ -30,7 +30,8 @@ public class ActionZyw {
 	
 	@PostMapping("/upda")
 	public Object upda(Clpp clpp) {
-	    biz.upda(clpp);
+	    biz.upda(clpp);   
+	    System.out.println("11");
 		return 1;
 	}
 	
