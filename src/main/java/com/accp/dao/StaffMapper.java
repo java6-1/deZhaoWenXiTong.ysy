@@ -21,9 +21,13 @@ public interface StaffMapper {
     int updateByPrimaryKey(Staff record);
     Staff selectuser(@Param("staffAccount")String staffAccount,@Param("staffPawss")String staffPawss);
     Staff selectuserPhone(@Param("staff")String staff);
+
     
     //查询全部wlw
     @Select("select * from staff  INNER JOIN section ON section.`sectionbh`=staff.`sectionID`")
     List<Staff> queryStaff();
+
+
+    List<Staff> selec(@Param("staffname")String staffname);
 
 }

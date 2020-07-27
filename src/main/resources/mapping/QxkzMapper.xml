@@ -73,12 +73,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Qxkz" >
     update qxkz
     <set >
-      <if test="staffid != null" >
-        staffID = #{staffid,jdbcType=INTEGER},
-      </if>
-      <if test="postname != null" >
-        postName = #{postname,jdbcType=VARCHAR},
-      </if>
       <if test="zzjg != null" >
         zzjg = #{zzjg,jdbcType=INTEGER},
       </if>
@@ -146,6 +140,6 @@
         bz3 = #{bz3,jdbcType=INTEGER},
       </if>
     </set>
-    where qxID = #{qxid,jdbcType=INTEGER}
+    where staffid = #{staffid,jdbcType=INTEGER}
   </update>
 </mapper>

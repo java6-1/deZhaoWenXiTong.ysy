@@ -18,6 +18,6 @@ public interface QxkzMapper {
 	int insert(@Param("record")Qxkz record);
 	
 	/* 修改会员权限 */
-	int updateByPrimaryKeySelective(@Param("record")Qxkz record);
+	int updateByPrimaryKeySelective(Qxkz record);
 
 }
