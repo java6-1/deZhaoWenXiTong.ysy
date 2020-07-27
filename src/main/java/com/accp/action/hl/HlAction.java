@@ -1,8 +1,11 @@
 package com.accp.action.hl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.hl.ChexingBiz;
 import com.accp.biz.hl.QxkzBiz;
-import com.accp.pojo.Chexing;
+import com.accp.biz.hl.SstaffBiz;
 import com.accp.pojo.Qxkz;
+import com.accp.pojo.Staff;
+import com.github.pagehelper.PageInfo;
 
 
 @RestController
@@ -28,14 +33,38 @@ public class HlAction {
 	@Autowired
 	private QxkzBiz qxkzBiz;
 	
+	@Autowired
+	private SstaffBiz staffBiz;
 	
-	
-	/**查询全部**/
+	/**查询全部权限**/
 	@GetMapping("/selec")
 	public List<Qxkz> select() {	
 		List<Qxkz> list = qxkzBiz.select();
 		return  list;
 	}
+	
+	/*
+	 * @GetMapping("query/{pageNum}/{pageSize}/{staffname}") public PageInfo<Staff>
+	 * selectBy(@PathVariable Integer pageNum,@PathVariable Integer
+	 * pageSize,@PathVariable String staffname) { return staffBiz.selec(pageNum,
+	 * pageSize,staffname); }
+	 */
+	
+	
+	
+	@GetMapping("query")
+	public PageInfo<Staff> selectBy(HttpServletRequest request, HttpServletResponse response) {
+		String strPageNum = request.getParameter("pageNum");
+		Integer pageNum = strPageNum == null ? 1 : Integer.parseInt(strPageNum);
+		String strPageSize = request.getParameter("pageSize");
+		Integer pageSize = strPageSize == null ? 1 : Integer.parseInt(strPageSize);	
+		String staffname = request.getParameter("staffname");
+		System.out.println(staffname);
+		return staffBiz.selec(pageNum, pageSize,staffname);
+	}
+	
+	
+	
 	
 	/**根据ID查询**/
 	@GetMapping("/selectByPrimaryKey/{staffID}")
@@ -56,9 +85,14 @@ public class HlAction {
 	
 	/**修改会员权限**/
 	@PutMapping("/updateByPrimaryKeySelective")
-	public int  updateByPrimaryKeySelective(@RequestBody Qxkz record) {	
+	public Map<String, Object>  updateByPrimaryKeySelective(@RequestBody Qxkz record) {	
+		System.out.println(record.getStaffid());
 		int count = qxkzBiz.updateByPrimaryKeySelective(record);
-		return  count;
+
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		message.put("msg", "ok");
+		return  message;
 	}
 	
 }
