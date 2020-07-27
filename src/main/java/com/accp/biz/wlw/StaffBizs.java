@@ -19,8 +19,10 @@ public class StaffBizs {
 	
 	//查询全部
 	public PageInfo<Staff> queryByPost(Integer pageNum, Integer pageSize) {
+		System.out.println("ji");
 		PageHelper.startPage(pageNum, pageSize);
 		return new PageInfo<Staff>(staffMapper.queryStaff());
+
 	}
 	
 }
