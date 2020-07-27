@@ -2,6 +2,8 @@ package com.accp.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.accp.pojo.Chexing;
 
 public interface ChexingMapper {
@@ -19,4 +21,7 @@ public interface ChexingMapper {
     int updateByPrimaryKeySelective(Chexing record);
 
     int updateByPrimaryKey(Chexing record);
+    
+    @Select("select * from chexing")
+    List<Chexing> queryForm();
 }

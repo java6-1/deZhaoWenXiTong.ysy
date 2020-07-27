@@ -20,7 +20,8 @@ public interface ClppMapper {
 
     int updateByPrimaryKey(Clpp record);
     
-    @Select("<script>select * from clpp where 1=1 <if test=\" name !=null and name !='' \">AND clppName=#{name} </if></script>")
+    @Select("<script>select * from clpp where 1=1 <if test=\" name !=null and name !='' \">AND clppName=#{name} </if>"
+    		+ "<if test=\" szm !=null and szm !='' \">AND clppszm=#{szm} </if></script>")
     List<Clpp> queryForm(String name,String szm);
     
 

@@ -6,7 +6,9 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.accp.dao.ChexingMapper;
 import com.accp.dao.ClppMapper;
+import com.accp.pojo.Chexing;
 import com.accp.pojo.Clpp;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -17,9 +19,16 @@ public class ZywBiz {
 	@Autowired
 	ClppMapper clppmapper;
 	
+	@Autowired
+	ChexingMapper chexingmapper;
+	
 	public PageInfo<Clpp> queryByAuction(Integer pageNum,String name,String szm) {
 		  PageHelper.startPage(pageNum, 5);
 		  return new PageInfo<Clpp>(clppmapper.queryForm(name,szm));
+		 }
+	public PageInfo<Chexing> queryByChe(Integer pageNum,String name,String szm,Integer size) {
+		  PageHelper.startPage(pageNum, size);
+		  return new PageInfo<Chexing>(chexingmapper.queryForm());
 		 }
 	
 	public int ins(Clpp clpp) {
