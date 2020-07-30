@@ -59,9 +59,19 @@ public class Staff {
     
     private String sectionname;
     
+    private String sectionbh;
+    
     
 
-    public String getSectionname() {
+    public String getSectionbh() {
+		return sectionbh;
+	}
+
+	public void setSectionbh(String sectionbh) {
+		this.sectionbh = sectionbh;
+	}
+
+	public String getSectionname() {
 		return sectionname;
 	}
 
