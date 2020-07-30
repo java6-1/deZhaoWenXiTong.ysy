@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.validator.internal.util.stereotypes.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import com.accp.biz.hl.ChexingBiz;
 import com.accp.biz.hl.QxkzBiz;
 import com.accp.biz.hl.SstaffBiz;
+import com.accp.biz.hl.WaiqinBiz;
+import com.accp.biz.hl.WxxmBiz;
 import com.accp.pojo.Qxkz;
 import com.accp.pojo.Staff;
+import com.accp.pojo.Waiqin;
+import com.accp.pojo.Wxxm;
 import com.github.pagehelper.PageInfo;
 
 
@@ -36,12 +41,26 @@ public class HlAction {
 	@Autowired
 	private SstaffBiz staffBiz;
 	
+	@Autowired
+	private WaiqinBiz waiqinBiz;
+	
+	@Autowired
+	private WxxmBiz wxxmBiz;
+	
 	/**查询全部权限**/
 	@GetMapping("/selec")
 	public List<Qxkz> select() {	
 		List<Qxkz> list = qxkzBiz.select();
 		return  list;
 	}
+	
+	/**查询全部权限**/
+	@GetMapping("/selecl")
+	public List<Wxxm> selec() {	
+		List<Wxxm> list = wxxmBiz.selec();
+		return  list;
+	}
+	
 	
 	/*
 	 * @GetMapping("query/{pageNum}/{pageSize}/{staffname}") public PageInfo<Staff>
@@ -92,5 +111,13 @@ public class HlAction {
 		message.put("msg", "ok");
 		return  message;
 	}
+	
+	/**查询全部权限**/
+	@GetMapping("/selectByjiescph/{jiescph}")
+	public List<Waiqin> selectByjiescph(@PathVariable String jiescph) {	
+		List<Waiqin> list = waiqinBiz.selectByjiescph(jiescph);
+		return  list;
+	}
+	
 	
 }

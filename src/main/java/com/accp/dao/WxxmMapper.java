@@ -1,8 +1,13 @@
 package com.accp.dao;
 
+import java.util.List;
+
 import com.accp.pojo.Wxxm;
 
 public interface WxxmMapper {
+	List<Wxxm> select();
+	
+	
     int deleteByPrimaryKey(Integer wxxmid);
 
     int insert(Wxxm record);
