@@ -23,5 +23,5 @@ public interface ChexingMapper {
     int updateByPrimaryKey(Chexing record);
     
     @Select("select * from chexing")
-    List<Chexing> queryForm();
+    List<Chexing> queryForm(String name);
 }

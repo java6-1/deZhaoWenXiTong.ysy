@@ -24,6 +24,8 @@ public interface ClppMapper {
     		+ "<if test=\" szm !=null and szm !='' \">AND clppszm=#{szm} </if></script>")
     List<Clpp> queryForm(String name,String szm);
     
-
+       
+    @Select("select * from clpp")
+    List<Clpp> query();
     
 }

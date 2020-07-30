@@ -1,5 +1,7 @@
 package com.accp.biz.zyw;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -28,11 +30,17 @@ public class ZywBiz {
 		 }
 	public PageInfo<Chexing> queryByChe(Integer pageNum,String name,String szm,Integer size) {
 		  PageHelper.startPage(pageNum, size);
-		  return new PageInfo<Chexing>(chexingmapper.queryForm());
+		  return new PageInfo<Chexing>(chexingmapper.queryForm(name));
 		 }
+	public List<Clpp> query(){
+		return clppmapper.query();
+	}
 	
 	public int ins(Clpp clpp) {
 		return clppmapper.insertSelective(clpp);
+	}
+	public int inschexing(Chexing clpp) {
+		return chexingmapper.insertSelective(clpp);
 	}
 	public int upda(Clpp clpp) {
 		return clppmapper.updateByPrimaryKeySelective(clpp);
