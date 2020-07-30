@@ -13,7 +13,49 @@ public class Wxxm {
 
     private Integer bz3;
 
-    public Integer getWxxmid() {
+    private Double bzjia;
+    
+    private Double hyjia;
+    
+    private Double vipjia;
+    
+    private Double xyijia;
+    
+    
+    
+    public Double getBzjia() {
+		return bzjia;
+	}
+
+	public void setBzjia(Double bzjia) {
+		this.bzjia = bzjia;
+	}
+
+	public Double getHyjia() {
+		return hyjia;
+	}
+
+	public void setHyjia(Double hyjia) {
+		this.hyjia = hyjia;
+	}
+
+	public Double getVipjia() {
+		return vipjia;
+	}
+
+	public void setVipjia(Double vipjia) {
+		this.vipjia = vipjia;
+	}
+
+	public Double getXyijia() {
+		return xyijia;
+	}
+
+	public void setXyijia(Double xyijia) {
+		this.xyijia = xyijia;
+	}
+
+	public Integer getWxxmid() {
         return wxxmid;
     }
 
