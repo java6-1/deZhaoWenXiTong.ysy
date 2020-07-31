@@ -22,6 +22,7 @@ public interface ChexingMapper {
 
     int updateByPrimaryKey(Chexing record);
     
-    @Select("select * from chexing")
-    List<Chexing> queryForm(String name);
+    @Select("<script>select * from chexing where 1=1"
+    		+ "<if test=\" cname !=null and cname !=''  \">AND chexingName like #{cname} </if></script>")
+    List<Chexing> queryForm(String cname);
 }

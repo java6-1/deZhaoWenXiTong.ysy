@@ -48,5 +48,8 @@ public class ZywBiz {
 	public int del(Integer clppid) {
 		return clppmapper.deleteByPrimaryKey(clppid);
 	}
+	public int dels(Integer cheid) {
+		return chexingmapper.deleteByPrimaryKey(cheid);
+	}
 
 }

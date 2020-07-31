@@ -11,7 +11,7 @@
     <result column="bzjia" property="bzjia" jdbcType="DECIMAL" />
     <result column="hyjia" property="hyjia" jdbcType="DECIMAL" />
     <result column="vipjia" property="vipjia" jdbcType="DECIMAL" />
-    <result column="xyijia" property="xyijia" jdbcType="DECIMAL" />
+    <result column="xyjia" property="xyjia" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
     wxxmId, wxtypeId, wxxmName, bz1, bz2, bz3

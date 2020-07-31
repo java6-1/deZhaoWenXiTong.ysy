@@ -20,7 +20,11 @@ public class AuctionZywChexing {
 	
 	@GetMapping("/chexing")
 	public Object show(Integer pageNum,Integer size,String name,String szm) {
-		System.out.println(size);
+		System.out.println(name);
+		if(name !="" && name !=null && name != "undefined") {
+			name="%"+name+"%";
+		}
+
 		return biz.queryByChe(pageNum,name,szm,size);
 	}
 	@PostMapping("/inschexing")
@@ -29,4 +33,9 @@ public class AuctionZywChexing {
 	   biz.inschexing(chexing);
 		return 1;
 	}
+	@GetMapping("/scchexing")
+	public Object sc(Integer cheid ) {
+		return biz.dels(cheid);
+	}
+	
 }
