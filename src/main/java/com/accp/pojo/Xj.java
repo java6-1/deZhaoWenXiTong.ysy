@@ -7,7 +7,7 @@ public class Xj {
 
     private Long xjtime;
 
-    private Integer bz1;
+    private double xjfei;
 
     private Integer bz2;
 
@@ -37,15 +37,17 @@ public class Xj {
         this.xjtime = xjtime;
     }
 
-    public Integer getBz1() {
-        return bz1;
-    }
 
-    public void setBz1(Integer bz1) {
-        this.bz1 = bz1;
-    }
 
-    public Integer getBz2() {
+    public double getXjfei() {
+		return xjfei;
+	}
+
+	public void setXjfei(double xjfei) {
+		this.xjfei = xjfei;
+	}
+
+	public Integer getBz2() {
         return bz2;
     }
 
