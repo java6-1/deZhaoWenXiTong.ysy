@@ -2,6 +2,7 @@ package com.accp.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
@@ -29,5 +30,11 @@ public interface StaffMapper {
 
 
     List<Staff> selec(@Param("staffname")String staffname);
+    
+    
+    //新增员工
+    @Insert("insert into staff(postid,staffname,staffsex,tstore,sectionid,education,edtype,school,specialty,sfid,yhdz,xjdz,staff,entrytime)values(#{postid},#{staffname},#{staffsex},#{tstore},#{sectionid},#{education},#{edtype},#{school},#{specialty},#{sfid},#{yhdz},#{xjdz},#{staff},#{entrytime})")
+    int addStaff(Staff staff);
 
+    
 }

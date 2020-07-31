@@ -1,5 +1,7 @@
 package com.accp.biz.wlw;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -49,5 +51,11 @@ public class PostBiz {
 	public int deletePost(Integer  postid) {
 		int count = postMapper.deleteByid(postid);
 		return count;
+	}
+	
+	//查询全部
+	public List<Post> queryByPosts(){
+		List<Post> list=postMapper.queryPost();
+		return list;
 	}
 }
