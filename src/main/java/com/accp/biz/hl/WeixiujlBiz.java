@@ -19,6 +19,7 @@ public class WeixiujlBiz {
 	/*新增维修记录主表 */
 	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
 	public int insertSelective(Weixiujl record) {
+		System.out.println(record.getKhclid());
 		return weixiujlMapper.insertSelective(record);
 	}
 }

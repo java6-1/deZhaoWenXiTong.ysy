@@ -43,7 +43,7 @@ public class Weixiujl {
 
 
 
-    public Integer getWeixiujlid() {
+    public Integer weixiujlid() {
         return weixiujlid;
     }
 

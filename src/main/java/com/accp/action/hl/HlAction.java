@@ -190,16 +190,24 @@ public class HlAction {
 	@PostMapping("/insertSelective")
 	public Map<String, Object>  insertSelective(@RequestBody Weixiujl record, HttpSession session) {	
 		weixiujlBiz.insertSelective(record);
+		
 		Staff staff = staffBiz.selecBybzj(record.getWeixiuzrr());
 		
+		/* Weixiujl recor = new Weixiujl(); */
+	
+
+		 
+		
+		
 		/*
-		 * Weixiusp recor = new Weixiusp(record.getWeixiujlid(),"技工费",);
-		 * weixiuspBiz.insertSelective(recor); Map<String, Object> message = new
-		 * HashMap<String, Object>(); session.setAttribute("Weixiujlid",
-		 * record.getWeixiujlid()); message.put("code", "200"); message.put("msg",
-		 * "ok");
+		 * Weixiusp recor = new Weixiusp(record.,"技工费",50.0);
+		 * weixiuspBiz.insertSelective1(recor);
 		 */
-		return  null;
+		 
+		 Map<String, Object> message = new HashMap<String, Object>();
+		 message.put("code", "200");
+		 message.put("msg","ok");
+		return  message;
 	}
 	
 	

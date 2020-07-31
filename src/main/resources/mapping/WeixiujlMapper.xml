@@ -34,7 +34,6 @@
     <insert id="insertSelective" parameterType="com.accp.pojo.Weixiujl" useGeneratedKeys="true" keyProperty="weixiujlid" keyColumn="weixiujlId" >
     insert into weixiujl
     <trim prefix="(" suffix=")" suffixOverrides="," >
-
       <if test="khclid != null" >
         khclId,
       </if>
@@ -92,7 +91,6 @@
       
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-
       <if test="khclid != null" >
         #{khclid,jdbcType=INTEGER},
       </if>

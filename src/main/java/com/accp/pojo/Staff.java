@@ -303,4 +303,18 @@ public class Staff {
     public void setBz3(Integer bz3) {
         this.bz3 = bz3;
     }
+
+	@Override
+	public String toString() {
+		return "Staff [staffid=" + staffid + ", postid=" + postid + ", bzid=" + bzid + ", xjid=" + xjid + ", qxid="
+				+ qxid + ", staffname=" + staffname + ", staffsex=" + staffsex + ", staffaccount=" + staffaccount
+				+ ", staffpawss=" + staffpawss + ", tstore=" + tstore + ", sectionid=" + sectionid + ", position="
+				+ position + ", education=" + education + ", edtype=" + edtype + ", school=" + school + ", specialty="
+				+ specialty + ", sfid=" + sfid + ", yhdz=" + yhdz + ", xjdz=" + xjdz + ", staff=" + staff
+				+ ", entrytime=" + entrytime + ", dimissiontime=" + dimissiontime + ", cause=" + cause + ", state="
+				+ state + ", bz1=" + bz1 + ", bz2=" + bz2 + ", bz3=" + bz3 + ", sectionname=" + sectionname
+				+ ", sectionbh=" + sectionbh + ", xj=" + xj + "]";
+	}
+    
+    
 }
