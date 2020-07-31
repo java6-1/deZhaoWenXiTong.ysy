@@ -5,7 +5,7 @@
     <id column="xjId" property="xjid" jdbcType="INTEGER" />
     <result column="xjName" property="xjname" jdbcType="VARCHAR" />
     <result column="xjTime" property="xjtime" jdbcType="DECIMAL" />
-    <result column="bz1" property="bz1" jdbcType="INTEGER" />
+    <result column="xjfei" property="xjfei" jdbcType="DOUBLE" />
     <result column="bz2" property="bz2" jdbcType="INTEGER" />
     <result column="bz3" property="bz3" jdbcType="INTEGER" />
   </resultMap>

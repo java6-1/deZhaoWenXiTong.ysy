@@ -59,6 +59,8 @@ public class Staff {
     
     private String sectionname;
     
+    private String sectionbh;
+    
     
     private Xj xj;
     
@@ -69,6 +71,13 @@ public class Staff {
 
 	public void setXj(Xj xj) {
 		this.xj = xj;
+	}
+    public String getSectionbh() {
+		return sectionbh;
+	}
+
+	public void setSectionbh(String sectionbh) {
+		this.sectionbh = sectionbh;
 	}
 
 	public String getSectionname() {
