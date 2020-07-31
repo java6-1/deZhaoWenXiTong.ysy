@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.WeixiuspMapper">
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Weixiusp">
+    <id column="weixiuspId" jdbcType="INTEGER" property="weixiuspid" />
+    <result column="weixiujlId" jdbcType="INTEGER" property="weixiujlid" />
+    <result column="weixiuspName" jdbcType="VARCHAR" property="weixiuspname" />
+    <result column="weixiuspbzPice" jdbcType="DOUBLE" property="weixiuspbzpice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    weixiuspId, weixiujlId, weixiuspName, weixiuspbzPice
+  </sql>
+  
+   <insert id="insert" parameterType="com.accp.pojo.Weixiusp">
+    insert into weixiusp (weixiujlId, weixiuspName, 
+      weixiuspbzPice)
+    values ( #{weixiujlid,jdbcType=INTEGER}, #{weixiuspname,jdbcType=VARCHAR}, 
+      #{weixiuspbzpice,jdbcType=DOUBLE})
+  </insert>
+  
+  
+ <!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from weixiusp
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from weixiusp
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Weixiusp">
+    insert into weixiusp (weixiuspId, weixiujlId, weixiuspName, 
+      weixiuspbzPice)
+    values (#{weixiuspid,jdbcType=INTEGER}, #{weixiujlid,jdbcType=INTEGER}, #{weixiuspname,jdbcType=VARCHAR}, 
+      #{weixiuspbzpice,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Weixiusp">
+    insert into weixiusp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="weixiuspid != null">
+        weixiuspId,
+      </if>
+      <if test="weixiujlid != null">
+        weixiujlId,
+      </if>
+      <if test="weixiuspname != null">
+        weixiuspName,
+      </if>
+      <if test="weixiuspbzpice != null">
+        weixiuspbzPice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="weixiuspid != null">
+        #{weixiuspid,jdbcType=INTEGER},
+      </if>
+      <if test="weixiujlid != null">
+        #{weixiujlid,jdbcType=INTEGER},
+      </if>
+      <if test="weixiuspname != null">
+        #{weixiuspname,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiuspbzpice != null">
+        #{weixiuspbzpice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Weixiusp">
+    update weixiusp
+    <set>
+      <if test="weixiujlid != null">
+        weixiujlId = #{weixiujlid,jdbcType=INTEGER},
+      </if>
+      <if test="weixiuspname != null">
+        weixiuspName = #{weixiuspname,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiuspbzpice != null">
+        weixiuspbzPice = #{weixiuspbzpice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Weixiusp">
+    update weixiusp
+    set weixiujlId = #{weixiujlid,jdbcType=INTEGER},
+      weixiuspName = #{weixiuspname,jdbcType=VARCHAR},
+      weixiuspbzPice = #{weixiuspbzpice,jdbcType=DOUBLE}
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Weixiusp">
+    <id column="weixiuspId" jdbcType="INTEGER" property="weixiuspid" />
+    <result column="weixiuspName" jdbcType="VARCHAR" property="weixiuspname" />
+    <result column="weixiuspbzPice" jdbcType="DOUBLE" property="weixiuspbzpice" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    weixiuspId, weixiuspName, weixiuspbzPice
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from weixiusp
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from weixiusp
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Weixiusp">
+    insert into weixiusp (weixiuspId, weixiuspName, weixiuspbzPice
+      )
+    values (#{weixiuspid,jdbcType=INTEGER}, #{weixiuspname,jdbcType=VARCHAR}, #{weixiuspbzpice,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.Weixiusp">
+    insert into weixiusp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="weixiuspid != null">
+        weixiuspId,
+      </if>
+      <if test="weixiuspname != null">
+        weixiuspName,
+      </if>
+      <if test="weixiuspbzpice != null">
+        weixiuspbzPice,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="weixiuspid != null">
+        #{weixiuspid,jdbcType=INTEGER},
+      </if>
+      <if test="weixiuspname != null">
+        #{weixiuspname,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiuspbzpice != null">
+        #{weixiuspbzpice,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Weixiusp">
+    update weixiusp
+    <set>
+      <if test="weixiuspname != null">
+        weixiuspName = #{weixiuspname,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiuspbzpice != null">
+        weixiuspbzPice = #{weixiuspbzpice,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Weixiusp">
+    update weixiusp
+    set weixiuspName = #{weixiuspname,jdbcType=VARCHAR},
+      weixiuspbzPice = #{weixiuspbzpice,jdbcType=DOUBLE}
+    where weixiuspId = #{weixiuspid,jdbcType=INTEGER}
+  </update> -->
+</mapper>

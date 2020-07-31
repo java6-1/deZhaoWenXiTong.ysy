@@ -26,7 +26,12 @@ public interface StaffMapper {
     //查询全部wlw
     @Select("select * from staff  INNER JOIN section ON section.`sectionbh`=staff.`sectionID`")
     List<Staff> queryStaff();
-
+    
+    
+    Staff selecBybzj(@Param("staffname")String staffname);
+    
+    
+    List<Staff> selecBybzjg();
 
     List<Staff> selec(@Param("staffname")String staffname);
 

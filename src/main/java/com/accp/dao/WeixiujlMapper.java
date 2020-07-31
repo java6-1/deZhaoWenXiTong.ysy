@@ -1,13 +1,17 @@
 package com.accp.dao;
 
+import org.apache.ibatis.annotations.Options;
+
 import com.accp.pojo.Weixiujl;
 
 public interface WeixiujlMapper {
     int deleteByPrimaryKey(Integer weixiujlid);
 
     int insert(Weixiujl record);
-
+    
+    @Options(useGeneratedKeys = false, keyProperty = "weixiujlid", keyColumn = "weixiujlId")
     int insertSelective(Weixiujl record);
+
 
     Weixiujl selectByPrimaryKey(Integer weixiujlid);
 

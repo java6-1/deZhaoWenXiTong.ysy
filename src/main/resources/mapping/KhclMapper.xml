@@ -20,7 +20,21 @@
     khclId, kehuId, jiescph, khclpp, khcljsy, khcldh, khclsr, khcljcr, khcllc, khclrq, 
     bz1, bz2, bz3
   </sql>
+  <!--查询客户车辆-->
+  <select id="select" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from khcl
+  </select>
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from khcl
+    where khclId = #{khclid,jdbcType=INTEGER}
+  </select>
+  
+ <!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from khcl
@@ -182,5 +196,5 @@
       bz2 = #{bz2,jdbcType=INTEGER},
       bz3 = #{bz3,jdbcType=INTEGER}
     where khclId = #{khclid,jdbcType=INTEGER}
-  </update>
+  </update> -->
 </mapper>

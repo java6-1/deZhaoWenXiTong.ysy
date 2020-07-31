@@ -60,8 +60,18 @@ public class Staff {
     private String sectionname;
     
     
+    private Xj xj;
+    
+    
+    public Xj getXj() {
+		return xj;
+	}
 
-    public String getSectionname() {
+	public void setXj(Xj xj) {
+		this.xj = xj;
+	}
+
+	public String getSectionname() {
 		return sectionname;
 	}
 

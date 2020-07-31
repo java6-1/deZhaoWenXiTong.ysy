@@ -23,6 +23,7 @@ public interface ClppMapper {
     @Select("<script>select * from clpp where 1=1 <if test=\" name !=null and name !='' \">AND clppName=#{name} </if></script>")
     List<Clpp> queryForm(String name,String szm);
     
-
+    //查询全部
+    List<Clpp> select();
     
 }
