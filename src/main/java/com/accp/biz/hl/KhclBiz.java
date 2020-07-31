@@ -18,8 +18,8 @@ public class KhclBiz {
 	private KhclMapper khclmapper;
 	
 	
-	public List<Khcl> select() {
-		 return khclmapper.select();
+	public List<Khcl> select( String jiescph) {
+		 return khclmapper.select(jiescph);
 	}
 	
 	

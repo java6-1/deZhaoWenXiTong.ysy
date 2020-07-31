@@ -1,5 +1,8 @@
 package com.accp.biz.hl;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -18,7 +21,19 @@ public class WeixiuspBiz {
 	
 	/*新增维修记录主表 */
 	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
-	public int insertSelective(Weixiusp record) {
-		return weixiuspMapper.insertSelective(record);
+	public int insertSelective1(Weixiusp record) {
+		return weixiuspMapper.insert(record);
+	}
+	
+	/*删除维修记录主表 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
+	public int deleteByPrimaryKey(Integer weixiuspid) {
+		return weixiuspMapper.deleteByPrimaryKey(weixiuspid);
+	}
+	
+	
+	public List<Weixiusp> selectByKey(Integer weixiujlid){
+		return weixiuspMapper.selectByKey(weixiujlid);
+		
 	}
 }

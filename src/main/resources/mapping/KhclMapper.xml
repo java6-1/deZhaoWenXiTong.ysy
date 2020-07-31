@@ -24,7 +24,7 @@
   <select id="select" resultMap="BaseResultMap">
   	select 
     <include refid="Base_Column_List" />
-    from khcl
+    from khcl  WHERE `khcl`.`jiescph` LIKE "%"#{jiescph}"%"
   </select>
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >

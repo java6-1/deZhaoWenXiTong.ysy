@@ -47,13 +47,14 @@ public class Weixiusp {
 		super();
 	}
 
-	public Weixiusp( Integer weixiujlid, String weixiuspname, Double weixiuspbzpice) {
+	public Weixiusp(Integer weixiujlid, String weixiuspname, Double weixiuspbzpice) {
 		super();
 		this.weixiujlid = weixiujlid;
 		this.weixiuspname = weixiuspname;
 		this.weixiuspbzpice = weixiuspbzpice;
 	}
-    
+
+	
     
     
 }

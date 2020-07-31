@@ -61,8 +61,19 @@ public class Staff {
     
     private String sectionbh;
     
+    private double xjfei;
     
-    private Xj xj;
+    
+    
+    public double getXjfei() {
+		return xjfei;
+	}
+
+	public void setXjfei(double xjfei) {
+		this.xjfei = xjfei;
+	}
+
+	private Xj xj;
     
     
     public Xj getXj() {
@@ -313,8 +324,10 @@ public class Staff {
 				+ specialty + ", sfid=" + sfid + ", yhdz=" + yhdz + ", xjdz=" + xjdz + ", staff=" + staff
 				+ ", entrytime=" + entrytime + ", dimissiontime=" + dimissiontime + ", cause=" + cause + ", state="
 				+ state + ", bz1=" + bz1 + ", bz2=" + bz2 + ", bz3=" + bz3 + ", sectionname=" + sectionname
-				+ ", sectionbh=" + sectionbh + ", xj=" + xj + "]";
+				+ ", sectionbh=" + sectionbh + ", xjfei=" + xjfei + ", xj=" + xj + "]";
 	}
+
+	
     
     
 }

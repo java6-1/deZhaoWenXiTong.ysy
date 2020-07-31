@@ -2,6 +2,7 @@ package com.accp.biz.hl;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -18,5 +19,10 @@ public class WxxmBiz {
 	private WxxmMapper wxxmMapper;
 	public List<Wxxm> selec(){
 		return wxxmMapper.select();
+	}
+	
+	
+	public List<Wxxm> selectByP(String wxxmname){
+		return wxxmMapper.selectByP(wxxmname);
 	}
 }

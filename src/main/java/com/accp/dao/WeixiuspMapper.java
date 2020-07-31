@@ -1,13 +1,21 @@
 package com.accp.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.Weixiusp;
 
 public interface WeixiuspMapper {
 	
 	
-	int insertSelective(Weixiusp record);
+	int insert(Weixiusp record);
+	
+	List<Weixiusp> selectByKey(@Param("weixiujlid")Integer weixiujlid);
+	
+	int deleteByPrimaryKey(@Param("weixiuspid")Integer weixiuspid);
 	/*
-	 * int deleteByPrimaryKey(Integer weixiuspid);
+	 * 
 	 * 
 	 * int insert(Weixiusp record);
 	 * 

@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.annotations.Delete;
 import org.hibernate.validator.internal.util.stereotypes.ThreadSafe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -163,9 +165,9 @@ public class HlAction {
 	
 	
 	/**查询全部权限**/
-	@GetMapping("/select1")
-	public List<Khcl> select1() {	
-		List<Khcl> list = khclBiz.select();
+	@GetMapping("/select1/{queryString}")
+	public List<Khcl> select1(@PathVariable String queryString) {	
+		List<Khcl> list = khclBiz.select(queryString);
 		return  list;
 	}
 	
@@ -192,23 +194,63 @@ public class HlAction {
 		weixiujlBiz.insertSelective(record);
 		
 		Staff staff = staffBiz.selecBybzj(record.getWeixiuzrr());
-		
-		/* Weixiujl recor = new Weixiujl(); */
-	
+		System.out.println(staff);
 
-		 
 		
 		
-		/*
-		 * Weixiusp recor = new Weixiusp(record.,"技工费",50.0);
-		 * weixiuspBiz.insertSelective1(recor);
-		 */
+		Weixiusp recor = new Weixiusp(record.getweixiujlid(),"技工费",staff.getXjfei());
+		weixiuspBiz.insertSelective1(recor);
 		 
-		 Map<String, Object> message = new HashMap<String, Object>();
-		 message.put("code", "200");
-		 message.put("msg","ok");
+		 
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		message.put("weixiujlid",record.getweixiujlid());
+		
 		return  message;
 	}
 	
+	
+	/**新增维修记录表 **/
+	@GetMapping("/selectByKey/{weixiujlid}")
+	public List<Weixiusp> selectByKey(@PathVariable Integer weixiujlid){
+		return weixiuspBiz.selectByKey(weixiujlid); 
+	 }
+	
+	
+	/**新增维修记录表 **/
+	@GetMapping("/selectByP")
+	public List<Wxxm> selectByP(HttpServletRequest request){
+		String wxxmname = request.getParameter("wxxmname");
+		return wxxmBiz.selectByP(wxxmname);
+	 }
+	
+	
+	/**新增维修记录表 **/
+	@GetMapping("/insertSele/{wxxmname}/{bzjia}/{weixiujlid}")
+	public Map<String, Object>  insertSelective(@PathVariable String wxxmname,@PathVariable Double bzjia,@PathVariable Integer weixiujlid) {	
+		
+		Weixiusp recor = new Weixiusp(weixiujlid,wxxmname,bzjia);
+		weixiuspBiz.insertSelective1(recor);
+		 
+		 
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+
+		
+		return  message;
+	}
+	
+	
+	
+	
+	
+	//删除
+	@GetMapping("deleteBs/{weixiusp}")
+	public Map<String, Object> deleteByPrimaryKey(@PathVariable Integer weixiusp){
+		weixiuspBiz.deleteByPrimaryKey(weixiusp);
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		return  message;	
+	}
 	
 }
