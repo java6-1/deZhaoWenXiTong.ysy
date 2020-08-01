@@ -99,7 +99,7 @@
   <sql id="Base_Column_List">
     huiYuanId, huiYuanName, huiYuanPwd, ri
   </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+<!--   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from huiyuang
@@ -167,5 +167,5 @@
       huiYuanPwd = #{huiyuanpwd,jdbcType=VARCHAR},
       ri = #{ri,jdbcType=DATE}
     where huiYuanId = #{huiyuanid,jdbcType=INTEGER}
-  </update>
+  </update> -->
 </mapper>
