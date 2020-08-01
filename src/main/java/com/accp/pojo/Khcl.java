@@ -14,7 +14,7 @@ public class Khcl {
     private String khcljsy;
 
     private String khcldh;
-
+    
     private Date khclsr;
 
     private Date khcljcr;
