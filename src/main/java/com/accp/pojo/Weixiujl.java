@@ -40,9 +40,13 @@ public class Weixiujl {
     private Date starttime;
 
     private Date endstart;
+    
+    
+    
+    private Weixiusp weixiusp;
 
-
-
+    
+    
     public Integer getweixiujlid() {
         return weixiujlid;
     }

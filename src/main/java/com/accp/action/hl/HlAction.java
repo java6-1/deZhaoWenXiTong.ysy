@@ -45,8 +45,7 @@ import com.github.pagehelper.PageInfo;
 @RestController
 @RequestMapping("/api/hl") // 命名空间
 public class HlAction {
-	@Autowired
-	private ChexingBiz chexingBiz;
+
 	
 	@Autowired
 	private QxkzBiz qxkzBiz;
@@ -228,15 +227,10 @@ public class HlAction {
 	/**新增维修记录表 **/
 	@GetMapping("/insertSele/{wxxmname}/{bzjia}/{weixiujlid}")
 	public Map<String, Object>  insertSelective(@PathVariable String wxxmname,@PathVariable Double bzjia,@PathVariable Integer weixiujlid) {	
-		
 		Weixiusp recor = new Weixiusp(weixiujlid,wxxmname,bzjia);
 		weixiuspBiz.insertSelective1(recor);
-		 
-		 
 		Map<String, Object> message = new HashMap<String, Object>();
 		message.put("code", "200");
-
-		
 		return  message;
 	}
 	

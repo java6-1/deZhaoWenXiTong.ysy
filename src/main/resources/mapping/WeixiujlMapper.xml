@@ -21,6 +21,7 @@
     <result column="weixiujg" property="weixiujg" jdbcType="DECIMAL" />
     <result column="starttime" property="starttime" jdbcType="DATE" />
     <result column="endstart" property="endstart" jdbcType="DATE" />
+    
   </resultMap>
   <sql id="Base_Column_List" >
     weixiujlId, khclId, weixiujlBm, weixiujlName, weixiujlPice, weixiujlhyj, weixiujlvipj, 
