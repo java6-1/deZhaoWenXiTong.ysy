@@ -45,8 +45,7 @@ import com.github.pagehelper.PageInfo;
 @RestController
 @RequestMapping("/api/hl") // 命名空间
 public class HlAction {
-	@Autowired
-	private ChexingBiz chexingBiz;
+
 	
 	@Autowired
 	private QxkzBiz qxkzBiz;
