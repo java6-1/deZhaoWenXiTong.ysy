@@ -52,6 +52,7 @@ public class staffAction {
 	public Map<String, Object> delu2(@PathVariable String phone, HttpSession session) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
+			System.out.println();
 			Staff us = staffmapper.selectuserPhone(phone);
 			map.put("data", us);
 			if (null != us) {
