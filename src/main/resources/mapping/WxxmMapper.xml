@@ -8,10 +8,33 @@
     <result column="bz1" property="bz1" jdbcType="INTEGER" />
     <result column="bz2" property="bz2" jdbcType="INTEGER" />
     <result column="bz3" property="bz3" jdbcType="INTEGER" />
+    <result column="bzjia" property="bzjia" jdbcType="DECIMAL" />
+    <result column="hyjia" property="hyjia" jdbcType="DECIMAL" />
+    <result column="vipjia" property="vipjia" jdbcType="DECIMAL" />
+    <result column="xyijia" property="xyijia" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
     wxxmId, wxtypeId, wxxmName, bz1, bz2, bz3
   </sql>
+  
+  
+  
+  
+  <select id="select" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wxxm
+  </select>
+  
+   <select id="selectByP" resultMap="BaseResultMap"  >
+       SELECT * FROM `wxxm` WHERE 1=1
+       <if test="wxxmname != null and wxxmname != ''" >
+        and  `wxxm`.`wxxmName` like "%"#{wxxmname}"%"
+      </if> 
+  </select>
+
+  
+  
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

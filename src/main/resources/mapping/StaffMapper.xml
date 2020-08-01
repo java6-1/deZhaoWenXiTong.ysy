@@ -29,7 +29,23 @@
     <result column="bz1" property="bz1" jdbcType="INTEGER" />
     <result column="bz2" property="bz2" jdbcType="INTEGER" />
     <result column="bz3" property="bz3" jdbcType="INTEGER" />
+	<association property="xj" column="xjId" javaType="com.accp.pojo.Xj"
+		autoMapping="true">
+	</association>
   </resultMap>
+  
+  
+  
+  <!--查询技工星级-->
+  <select id="selecBybzj" resultType="com.accp.pojo.Staff" 	parameterType="com.accp.pojo.Xj">
+  	SELECT * FROM `staff` INNER JOIN `xj` ON `staff`.`xjId` = `xj`.`xjId` WHERE `staff`.`staffName` = #{staffname}
+  </select> 
+  
+    <!-- 查询班组技工 -->
+  <select id="selecBybzjg" resultType="com.accp.pojo.Staff">
+  	SELECT * FROM `staff` WHERE  `bzId` IS NOT NULL
+  </select>
+  
   <!-- 查询全部人员 -->
   <select id="selec" resultType="com.accp.pojo.Staff">
   	SELECT *FROM `staff` WHERE 1=1 

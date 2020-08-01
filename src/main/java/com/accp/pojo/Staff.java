@@ -56,8 +56,50 @@ public class Staff {
     private Integer bz2;
 
     private Integer bz3;
+    
+    private String sectionname;
+    
+    private String sectionbh;
+    
+    private double xjfei;
+    
+    
+    
+    public double getXjfei() {
+		return xjfei;
+	}
 
-    public Integer getStaffid() {
+	public void setXjfei(double xjfei) {
+		this.xjfei = xjfei;
+	}
+
+	private Xj xj;
+    
+    
+    public Xj getXj() {
+		return xj;
+	}
+
+	public void setXj(Xj xj) {
+		this.xj = xj;
+	}
+    public String getSectionbh() {
+		return sectionbh;
+	}
+
+	public void setSectionbh(String sectionbh) {
+		this.sectionbh = sectionbh;
+	}
+
+	public String getSectionname() {
+		return sectionname;
+	}
+
+	public void setSectionname(String sectionname) {
+		this.sectionname = sectionname;
+	}
+
+	public Integer getStaffid() {
         return staffid;
     }
 
@@ -272,4 +314,20 @@ public class Staff {
     public void setBz3(Integer bz3) {
         this.bz3 = bz3;
     }
+
+	@Override
+	public String toString() {
+		return "Staff [staffid=" + staffid + ", postid=" + postid + ", bzid=" + bzid + ", xjid=" + xjid + ", qxid="
+				+ qxid + ", staffname=" + staffname + ", staffsex=" + staffsex + ", staffaccount=" + staffaccount
+				+ ", staffpawss=" + staffpawss + ", tstore=" + tstore + ", sectionid=" + sectionid + ", position="
+				+ position + ", education=" + education + ", edtype=" + edtype + ", school=" + school + ", specialty="
+				+ specialty + ", sfid=" + sfid + ", yhdz=" + yhdz + ", xjdz=" + xjdz + ", staff=" + staff
+				+ ", entrytime=" + entrytime + ", dimissiontime=" + dimissiontime + ", cause=" + cause + ", state="
+				+ state + ", bz1=" + bz1 + ", bz2=" + bz2 + ", bz3=" + bz3 + ", sectionname=" + sectionname
+				+ ", sectionbh=" + sectionbh + ", xjfei=" + xjfei + ", xj=" + xj + "]";
+	}
+
+	
+    
+    
 }

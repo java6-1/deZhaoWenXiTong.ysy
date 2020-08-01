@@ -1,8 +1,15 @@
 package com.accp.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.accp.pojo.Wxxm;
 
 public interface WxxmMapper {
+	List<Wxxm> select();
+	
+	List<Wxxm> selectByP(@Param("wxxmname")String wxxmname);
     int deleteByPrimaryKey(Integer wxxmid);
 
     int insert(Wxxm record);

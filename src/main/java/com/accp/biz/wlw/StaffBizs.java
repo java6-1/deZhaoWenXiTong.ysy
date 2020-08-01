@@ -1,8 +1,5 @@
-package com.accp.biz.hl;
+package com.accp.biz.wlw;
 
-import java.util.List;
-
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -13,24 +10,18 @@ import com.accp.dao.StaffMapper;
 import com.accp.pojo.Staff;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-public class SstaffBiz {
-	
+public class StaffBizs {
 	@Autowired
 	private StaffMapper staffMapper;
-	public PageInfo<Staff> selec(Integer pageNum, Integer pageSize,String staffname){	
+	
+	//查询全部
+	public PageInfo<Staff> queryByStaff(Integer pageNum, Integer pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-		return  new PageInfo<Staff>(staffMapper.selec(staffname));
+		return new PageInfo<Staff>(staffMapper.queryStaff());
+
 	}
 	
-	
-	public Staff selecBybzj(String staffname){
-		return staffMapper.selecBybzj(staffname);
-	}
-	
-	
-	public List<Staff> selecBybzjg(){		
-		return staffMapper.selecBybzjg();
-	}
 }

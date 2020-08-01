@@ -21,49 +21,19 @@
     <result column="weixiujg" property="weixiujg" jdbcType="DECIMAL" />
     <result column="starttime" property="starttime" jdbcType="DATE" />
     <result column="endstart" property="endstart" jdbcType="DATE" />
-    <result column="bz1" property="bz1" jdbcType="INTEGER" />
-    <result column="bz2" property="bz2" jdbcType="INTEGER" />
-    <result column="bz3" property="bz3" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     weixiujlId, khclId, weixiujlBm, weixiujlName, weixiujlPice, weixiujlhyj, weixiujlvipj, 
     weixiujlxyj, weixiujlbz, weixiujlzt, weixiujlfg, weixiuzrr, weixiucfje, weixiucgcs, 
-    weixiutype, weixiulic, weixiujg, starttime, endstart, bz1, bz2, bz3
+    weixiutype, weixiulic, weixiujg, starttime, endstart, weixiubz, bz2, bz3
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from weixiujl
-    where weixiujlId = #{weixiujlid,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from weixiujl
-    where weixiujlId = #{weixiujlid,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.accp.pojo.Weixiujl" >
-    insert into weixiujl (weixiujlId, khclId, weixiujlBm, 
-      weixiujlName, weixiujlPice, weixiujlhyj, 
-      weixiujlvipj, weixiujlxyj, weixiujlbz, 
-      weixiujlzt, weixiujlfg, weixiuzrr, 
-      weixiucfje, weixiucgcs, weixiutype, 
-      weixiulic, weixiujg, starttime, 
-      endstart, bz1, bz2, bz3
-      )
-    values (#{weixiujlid,jdbcType=INTEGER}, #{khclid,jdbcType=INTEGER}, #{weixiujlbm,jdbcType=VARCHAR}, 
-      #{weixiujlname,jdbcType=VARCHAR}, #{weixiujlpice,jdbcType=DECIMAL}, #{weixiujlhyj,jdbcType=DECIMAL}, 
-      #{weixiujlvipj,jdbcType=DECIMAL}, #{weixiujlxyj,jdbcType=DECIMAL}, #{weixiujlbz,jdbcType=VARCHAR}, 
-      #{weixiujlzt,jdbcType=INTEGER}, #{weixiujlfg,jdbcType=VARCHAR}, #{weixiuzrr,jdbcType=VARCHAR}, 
-      #{weixiucfje,jdbcType=DECIMAL}, #{weixiucgcs,jdbcType=INTEGER}, #{weixiutype,jdbcType=INTEGER}, 
-      #{weixiulic,jdbcType=DECIMAL}, #{weixiujg,jdbcType=DECIMAL}, #{starttime,jdbcType=DATE}, 
-      #{endstart,jdbcType=DATE}, #{bz1,jdbcType=INTEGER}, #{bz2,jdbcType=INTEGER}, #{bz3,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.accp.pojo.Weixiujl" >
+  
+  
+  
+	<!--   新增维修记录表 -->
+    <insert id="insertSelective" parameterType="com.accp.pojo.Weixiujl" useGeneratedKeys="true" keyProperty="weixiujlid" keyColumn="weixiujlId" >
     insert into weixiujl
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="weixiujlid != null" >
-        weixiujlId,
-      </if>
       <if test="khclid != null" >
         khclId,
       </if>
@@ -118,20 +88,9 @@
       <if test="endstart != null" >
         endstart,
       </if>
-      <if test="bz1 != null" >
-        bz1,
-      </if>
-      <if test="bz2 != null" >
-        bz2,
-      </if>
-      <if test="bz3 != null" >
-        bz3,
-      </if>
+      
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="weixiujlid != null" >
-        #{weixiujlid,jdbcType=INTEGER},
-      </if>
       <if test="khclid != null" >
         #{khclid,jdbcType=INTEGER},
       </if>
@@ -186,17 +145,40 @@
       <if test="endstart != null" >
         #{endstart,jdbcType=DATE},
       </if>
-      <if test="bz1 != null" >
-        #{bz1,jdbcType=INTEGER},
-      </if>
-      <if test="bz2 != null" >
-        #{bz2,jdbcType=INTEGER},
-      </if>
-      <if test="bz3 != null" >
-        #{bz3,jdbcType=INTEGER},
-      </if>
     </trim>
   </insert>
+  
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from weixiujl
+    where weixiujlId = #{weixiujlid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from weixiujl
+    where weixiujlId = #{weixiujlid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.Weixiujl" >
+    insert into weixiujl (weixiujlId, khclId, weixiujlBm, 
+      weixiujlName, weixiujlPice, weixiujlhyj, 
+      weixiujlvipj, weixiujlxyj, weixiujlbz, 
+      weixiujlzt, weixiujlfg, weixiuzrr, 
+      weixiucfje, weixiucgcs, weixiutype, 
+      weixiulic, weixiujg, starttime, 
+      endstart, bz1, bz2, bz3
+      )
+    values (#{weixiujlid,jdbcType=INTEGER}, #{khclid,jdbcType=INTEGER}, #{weixiujlbm,jdbcType=VARCHAR}, 
+      #{weixiujlname,jdbcType=VARCHAR}, #{weixiujlpice,jdbcType=DECIMAL}, #{weixiujlhyj,jdbcType=DECIMAL}, 
+      #{weixiujlvipj,jdbcType=DECIMAL}, #{weixiujlxyj,jdbcType=DECIMAL}, #{weixiujlbz,jdbcType=VARCHAR}, 
+      #{weixiujlzt,jdbcType=INTEGER}, #{weixiujlfg,jdbcType=VARCHAR}, #{weixiuzrr,jdbcType=VARCHAR}, 
+      #{weixiucfje,jdbcType=DECIMAL}, #{weixiucgcs,jdbcType=INTEGER}, #{weixiutype,jdbcType=INTEGER}, 
+      #{weixiulic,jdbcType=DECIMAL}, #{weixiujg,jdbcType=DECIMAL}, #{starttime,jdbcType=DATE}, 
+      #{endstart,jdbcType=DATE}, #{bz1,jdbcType=INTEGER}, #{bz2,jdbcType=INTEGER}, #{bz3,jdbcType=INTEGER}
+      )
+  </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Weixiujl" >
     update weixiujl
     <set >
