@@ -120,7 +120,7 @@ public class HlAction {
 	public Qxkz selectByPrimaryKey(@PathVariable Integer staffID) {	
 		System.out.println(staffID);
 		Qxkz qxkz = qxkzBiz.selectByPrimaryKey(staffID);
-		System.out.println(qxkz+"111111");
+		System.out.println(qxkz+"111111111");
 		return  qxkz;
 	}
 	
