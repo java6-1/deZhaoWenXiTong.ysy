@@ -25,6 +25,6 @@ public interface SectionMapper {
     List<Section> querySection();
     
     //新增
-    @Insert("insert into section(sectionbh,sectionname,bz1,bz2,bz3)values(#{sectionbh},#{sectionname},#{bz1},#{bz2},#{bz3})")
+    @Insert("insert into section(sectionname,bz1,bz2,bz3)values(#{sectionname},#{bz1},#{bz2},#{bz3})")
     int addSection(Section section);
 }

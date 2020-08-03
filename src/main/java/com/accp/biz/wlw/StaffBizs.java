@@ -28,4 +28,22 @@ public class StaffBizs {
 		int count=staffMapper.addStaff(staff);
 		return count;
 	}
+	
+	//根据id查询
+	public Staff queryByStaff(Integer staffid) {
+		Staff staff=staffMapper.queryByStaff(staffid);
+		return staff;
+	}
+	
+	//根据id删除
+	public int deleteStaff(Integer staffid) {
+		int count = staffMapper.deleteStaff(staffid);
+		return count;
+	}
+	
+	//修改
+	public int updateStaff(Staff staff) {
+		int count = staffMapper.updateStaff(staff);
+		return count;
+	}
 }

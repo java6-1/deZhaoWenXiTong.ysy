@@ -67,4 +67,33 @@ public class StaffActions {
 		message.put("msg", "ok");
 		return message;
 	}
+	
+	//根据id查询
+	@GetMapping("queryByStaff/{staffid}")
+	public Staff queryByStaff(@PathVariable Integer staffid) {
+		Staff staff = staffBizs.queryByStaff(staffid);
+		return staff;
+	}
+	
+	//根据id删除
+	@GetMapping("deleteStaff/{staffid}")
+	public Map<String, Object> deleteByStaff(@PathVariable Integer staffid) {
+		int count = staffBizs.deleteStaff(staffid);
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		message.put("msg", "ok");
+		return message;
+	}
+	
+	//修改
+	@PostMapping("updateStaff")
+	@ResponseBody
+	public Map<String, Object> updateRuleFrom(@RequestBody Staff staff){
+		System.out.println(JSON.toJSONString(staff));
+		int count= staffBizs.updateStaff(staff);
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		message.put("msg", "ok");
+		return message;
+		}
 }

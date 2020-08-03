@@ -14,4 +14,5 @@ public interface SpxxMapper {
     int updateByPrimaryKeySelective(Spxx record);
 
     int updateByPrimaryKey(Spxx record);
+    
 }
