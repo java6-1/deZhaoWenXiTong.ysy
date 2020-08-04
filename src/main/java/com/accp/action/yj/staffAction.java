@@ -60,7 +60,7 @@ public class staffAction {
 				map.put("type", us.getStaffid());
 			}
 			session.setAttribute("user", us);
-			map.put("code", "200");
+			map.put("code","200");
 		} catch (Exception e) {
 			map.put("code", "400");
 			e.printStackTrace();
