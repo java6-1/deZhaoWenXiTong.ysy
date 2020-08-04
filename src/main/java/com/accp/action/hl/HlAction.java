@@ -1,5 +1,6 @@
 package com.accp.action.hl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +30,7 @@ import com.accp.biz.hl.SstaffBiz;
 import com.accp.biz.hl.WaiqinBiz;
 import com.accp.biz.hl.WeixiujlBiz;
 import com.accp.biz.hl.WeixiuspBiz;
+import com.accp.biz.hl.WxtypeBiz;
 import com.accp.biz.hl.WxxmBiz;
 import com.accp.pojo.Clpp;
 import com.accp.pojo.Kehu;
@@ -38,7 +40,10 @@ import com.accp.pojo.Staff;
 import com.accp.pojo.Waiqin;
 import com.accp.pojo.Weixiujl;
 import com.accp.pojo.Weixiusp;
+import com.accp.pojo.Wxtype;
 import com.accp.pojo.Wxxm;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 
 
@@ -77,6 +82,9 @@ public class HlAction {
 	@Autowired
 	private WeixiuspBiz weixiuspBiz;
 	
+	
+	@Autowired
+	private WxtypeBiz wxtypeBiz;
 	/**查询全部权限**/
 	@GetMapping("/selec")
 	public List<Qxkz> select() {	
@@ -188,30 +196,47 @@ public class HlAction {
 	
 	
 	/**新增维修记录表 **/
-	@PostMapping("/insertSelective")
-	public Map<String, Object>  insertSelective(@RequestBody Weixiujl record, HttpSession session) {	
+	@PostMapping("/insertSelect")
+	public Map<String, Object>  insertSelect(@RequestBody Weixiujl record) {	
+		
 		weixiujlBiz.insertSelective(record);
-		
-		Staff staff = staffBiz.selecBybzj(record.getWeixiuzrr());
-		System.out.println(staff);
-
-		
-		
-		Weixiusp recor = new Weixiusp(record.getweixiujlid(),"技工费",staff.getXjfei());
-		weixiuspBiz.insertSelective1(recor);
-		 
-		 
+		System.out.println(record);
 		Map<String, Object> message = new HashMap<String, Object>();
-		message.put("code", "200");
-		message.put("weixiujlid",record.getweixiujlid());
+		message.put("code", "200"); 
+		message.put("weixiujlid",record.getWeixiujlid());
+		 
 		
 		return  message;
 	}
 	
+	/**新增维修记录表 **/
+	@PostMapping("/insertlist/{weixiujlid}")
+	public Map<String, Object>  insertlist(@RequestBody List<Weixiusp> record,@PathVariable Integer weixiujlid) {
+		
+		List<Weixiusp> list = new ArrayList<Weixiusp>();
+		list = JSONObject.parseArray(JSONObject.toJSONString(record), Weixiusp.class);
+		for (Weixiusp weixiusp : list) {
+			weixiusp.setWeixiujlid(weixiujlid);
+		}
+		weixiuspBiz.insertlist(list);
+
+		Map<String, Object> message = new HashMap<String, Object>();
+		 message.put("code", "200"); 
+		return  message;
+	}
+	
+	
+	/**查询维修员工和费用**/
+	@GetMapping("/selecBystaff/{weixiuzrr}") 
+	public Staff   selecBystaff(@PathVariable String weixiuzrr) {
+		Staff staff = staffBiz.selecBybzj(weixiuzrr);
+		System.out.println(staff);
+		return staff;
+	}
 	
 	/**新增维修记录表 **/
 	@GetMapping("/selectByKey/{weixiujlid}")
-	public List<Weixiusp> selectByKey(@PathVariable Integer weixiujlid){
+	public List<Weixiusp> selectstaff(@PathVariable Integer weixiujlid){
 		return weixiuspBiz.selectByKey(weixiujlid); 
 	 }
 	
@@ -219,8 +244,8 @@ public class HlAction {
 	/**新增维修记录表 **/
 	@GetMapping("/selectByP")
 	public List<Wxxm> selectByP(HttpServletRequest request){
-		String wxxmname = request.getParameter("wxxmname");
-		return wxxmBiz.selectByP(wxxmname);
+		Integer wxtypeid = Integer.valueOf(request.getParameter("wxtypeid"));
+		return wxxmBiz.selectByP(wxtypeid);
 	 }
 	
 	
@@ -247,4 +272,23 @@ public class HlAction {
 		return  message;	
 	}
 	
+	@GetMapping("selecBybzj/{staffna}")
+	public Staff selecBybzj(@PathVariable String staffna) {
+		return staffBiz.selecBybzj(staffna);
+	}
+	
+	@GetMapping("selectWxtype")
+	public List<Wxtype> selectWxtype() {
+		return wxtypeBiz.select();
+	}
+	
+	
+	@GetMapping("updateBy/{bz1}/{wxxmid}")
+	public Map<String, Object> updateBy(@PathVariable Integer bz1,@PathVariable Integer wxxmid) {
+		wxxmBiz.updateBy(bz1,wxxmid);
+		System.out.println("121");
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		return  message;
+	}
 }

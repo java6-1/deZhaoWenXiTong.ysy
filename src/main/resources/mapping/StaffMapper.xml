@@ -1,10 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.StaffMapper" >
+<<<<<<< HEAD
  
+=======
+  <resultMap id="BaseResultMap" type="com.accp.pojo.Staff" >
+    <id column="staffID" property="staffid" jdbcType="INTEGER" />
+    <result column="postId" property="postid" jdbcType="INTEGER" />
+    <result column="bzId" property="bzid" jdbcType="INTEGER" />
+    <result column="xjId" property="xjid" jdbcType="INTEGER" />
+    <result column="qxID" property="qxid" jdbcType="INTEGER" />
+    <result column="staffName" property="staffname" jdbcType="VARCHAR" />
+    <result column="staffSex" property="staffsex" jdbcType="INTEGER" />
+    <result column="staffAccount" property="staffaccount" jdbcType="VARCHAR" />
+    <result column="staffPawss" property="staffpawss" jdbcType="VARCHAR" />
+    <result column="tStore" property="tstore" jdbcType="VARCHAR" />
+    <result column="sectionID" property="sectionid" jdbcType="INTEGER" />
+    <result column="position" property="position" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="VARCHAR" />
+    <result column="edType" property="edtype" jdbcType="VARCHAR" />
+    <result column="school" property="school" jdbcType="VARCHAR" />
+    <result column="specialty" property="specialty" jdbcType="VARCHAR" />
+    <result column="sfID" property="sfid" jdbcType="VARCHAR" />
+    <result column="yhdz" property="yhdz" jdbcType="VARCHAR" />
+    <result column="xjdz" property="xjdz" jdbcType="VARCHAR" />
+    <result column="staff" property="staff" jdbcType="VARCHAR" />
+    <result column="entryTime" property="entrytime" jdbcType="DATE" />
+    <result column="dimissionTime" property="dimissiontime" jdbcType="VARCHAR" />
+    <result column="cause" property="cause" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="bz1" property="bz1" jdbcType="INTEGER" />
+    <result column="bz2" property="bz2" jdbcType="INTEGER" />
+    <result column="bz3" property="bz3" jdbcType="INTEGER" />
+    <result column="xjfei" property="xjfei" jdbcType="DOUBLE" />
+	<association property="xj"  javaType="com.accp.pojo.Xj"
+		autoMapping="true">
+	</association>
+  </resultMap>
+>>>>>>> branch 'master' of https://github.com/java6-1/deZhaoWenXiTong.ysy.git
   
+<<<<<<< HEAD
    <!--查询技工星级-->
   <select id="selecBybzj" resultType="com.accp.pojo.Staff" 	parameterType="com.accp.pojo.Xj">
+=======
+  
+  
+  <!--查询技工星级-->
+  <select id="selecBybzj"  resultMap="BaseResultMap">
+>>>>>>> branch 'master' of https://github.com/java6-1/deZhaoWenXiTong.ysy.git
   	SELECT * FROM `staff` INNER JOIN `xj` ON `staff`.`xjId` = `xj`.`xjId` WHERE `staff`.`staffName` = #{staffname}
   </select> 
   

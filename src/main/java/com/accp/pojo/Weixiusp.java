@@ -8,8 +8,19 @@ public class Weixiusp {
     private String weixiuspname;
 
     private Double weixiuspbzpice;
+    private Integer weixiuspsum;
+    
+    
 
-    public Integer getWeixiuspid() {
+    public Integer getWeixiuspsum() {
+		return weixiuspsum;
+	}
+
+	public void setWeixiuspsum(Integer weixiuspsum) {
+		this.weixiuspsum = weixiuspsum;
+	}
+
+	public Integer getWeixiuspid() {
         return weixiuspid;
     }
 

@@ -9,8 +9,14 @@ import com.accp.pojo.Wxxm;
 public interface WxxmMapper {
 	List<Wxxm> select();
 	
-	List<Wxxm> selectByP(@Param("wxxmname")String wxxmname);
+	List<Wxxm> selectByP(@Param("wxtypeid")Integer wxtypeid);
     int deleteByPrimaryKey(Integer wxxmid);
+    
+    
+    int insertlist(@Param("record")List<Wxxm> record);
+    
+    
+    int updateBy(@Param("bz1")Integer bz1,@Param("wxxmid")Integer wxxmid);
 
     int insert(Wxxm record);
 

@@ -5,6 +5,8 @@ import java.util.Date;
 public class Weixiujl {
     private Integer weixiujlid;
 
+    private String khclph;
+
     private Integer khclid;
 
     private String weixiujlbm;
@@ -39,20 +41,28 @@ public class Weixiujl {
 
     private Date starttime;
 
-    private Date endstart;
-    
-    
-    
-    private Weixiusp weixiusp;
+    private String khclcp;
 
-    
-    
-    public Integer getweixiujlid() {
+    private String clzr;
+
+    private String cljsy;
+
+    private String clpp;
+
+    public Integer getWeixiujlid() {
         return weixiujlid;
     }
 
     public void setWeixiujlid(Integer weixiujlid) {
         this.weixiujlid = weixiujlid;
+    }
+
+    public String getKhclph() {
+        return khclph;
+    }
+
+    public void setKhclph(String khclph) {
+        this.khclph = khclph == null ? null : khclph.trim();
     }
 
     public Integer getKhclid() {
@@ -191,15 +201,47 @@ public class Weixiujl {
         this.starttime = starttime;
     }
 
-    public Date getEndstart() {
-        return endstart;
+    public String getKhclcp() {
+        return khclcp;
     }
 
-    public void setEndstart(Date endstart) {
-        this.endstart = endstart;
+    public void setKhclcp(String khclcp) {
+        this.khclcp = khclcp == null ? null : khclcp.trim();
     }
 
+    public String getClzr() {
+        return clzr;
+    }
+
+    public void setClzr(String clzr) {
+        this.clzr = clzr == null ? null : clzr.trim();
+    }
+
+    public String getCljsy() {
+        return cljsy;
+    }
+
+    public void setCljsy(String cljsy) {
+        this.cljsy = cljsy == null ? null : cljsy.trim();
+    }
+
+    public String getClpp() {
+        return clpp;
+    }
+
+    public void setClpp(String clpp) {
+        this.clpp = clpp == null ? null : clpp.trim();
+    }
+
+	@Override
+	public String toString() {
+		return "Weixiujl [weixiujlid=" + weixiujlid + ", khclph=" + khclph + ", khclid=" + khclid + ", weixiujlbm="
+				+ weixiujlbm + ", weixiujlname=" + weixiujlname + ", weixiujlpice=" + weixiujlpice + ", weixiujlhyj="
+				+ weixiujlhyj + ", weixiujlvipj=" + weixiujlvipj + ", weixiujlxyj=" + weixiujlxyj + ", weixiujlbz="
+				+ weixiujlbz + ", weixiujlzt=" + weixiujlzt + ", weixiujlfg=" + weixiujlfg + ", weixiuzrr=" + weixiuzrr
+				+ ", weixiucfje=" + weixiucfje + ", weixiucgcs=" + weixiucgcs + ", weixiutype=" + weixiutype
+				+ ", weixiulic=" + weixiulic + ", weixiujg=" + weixiujg + ", starttime=" + starttime + ", khclcp="
+				+ khclcp + ", clzr=" + clzr + ", cljsy=" + cljsy + ", clpp=" + clpp + "]";
+	}
     
-
-
 }

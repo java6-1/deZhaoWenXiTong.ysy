@@ -14,6 +14,9 @@ public interface WeixiuspMapper {
 	List<Weixiusp> selectByKey(@Param("weixiujlid")Integer weixiujlid);
 	
 	int deleteByPrimaryKey(@Param("weixiuspid")Integer weixiuspid);
+	
+	int insertlist(@Param("record")List<Weixiusp> record);
+	
 	/*
 	 * 
 	 * 

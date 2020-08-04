@@ -6,17 +6,37 @@
     <result column="weixiujlId" jdbcType="INTEGER" property="weixiujlid" />
     <result column="weixiuspName" jdbcType="VARCHAR" property="weixiuspname" />
     <result column="weixiuspbzPice" jdbcType="DOUBLE" property="weixiuspbzpice" />
+    <result column="weixiuspsum" jdbcType="INTEGER" property="weixiuspsum" />
+    
   </resultMap>
   <sql id="Base_Column_List">
-    weixiuspId, weixiujlId, weixiuspName, weixiuspbzPice
+    weixiuspId, weixiujlId, weixiuspName, weixiuspbzPice,weixiuspsum
   </sql>
   
    <insert id="insert" parameterType="com.accp.pojo.Weixiusp">
     insert into weixiusp (weixiujlId, weixiuspName, 
-      weixiuspbzPice)
+      weixiuspbzPice,weixiuspsum)
     values ( #{weixiujlid,jdbcType=INTEGER}, #{weixiuspname,jdbcType=VARCHAR}, 
-      #{weixiuspbzpice,jdbcType=DOUBLE})
+      #{weixiuspbzpice,jdbcType=DOUBLE},#{weixiuspsum,jdbcType=INTEGER})
   </insert>
+  
+  
+  
+   <insert id="insertlist" parameterType="com.accp.pojo.Weixiusp" >
+  	<if test="record.size()!=0">
+			insert into weixiusp (weixiujlId, weixiuspName, 
+      		weixiuspbzPice)
+    		values 
+			<foreach separator="," collection="record"
+				item="temp">
+				( #{temp.weixiujlid,jdbcType=INTEGER}, #{temp.weixiuspname,jdbcType=VARCHAR}, 
+      #{temp.weixiuspbzpice,jdbcType=DOUBLE})
+			</foreach>
+			;
+	</if> 	
+  </insert>
+  
+  
   
   <select id="selectByKey" resultMap="BaseResultMap">
  	 SELECT * FROM `weixiusp` WHERE  `weixiujlId`=#{weixiujlid}
