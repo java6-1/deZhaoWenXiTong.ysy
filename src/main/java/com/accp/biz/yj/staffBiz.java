@@ -14,8 +14,8 @@ import com.accp.pojo.Staff;
 public class staffBiz {
 	@Autowired
 	private StaffMapper staffmapper;
-	public Staff selectuser(String name, String password) {
-		return staffmapper.selectuser(name, password);
+	public Staff selectuserl(String name, String password) {
+		return staffmapper.selectuserl(name, password);
 	}
 	public Staff selectuserPhone(String phone) {
 		return staffmapper.selectuserPhone(phone);
