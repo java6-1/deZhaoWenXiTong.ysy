@@ -26,7 +26,7 @@ public class staffAction {
 	// 账号密码登录
 	@PostMapping("/denglu1")
 	public Map<String, Object> delu1(String name, String password, HttpSession session) {
-	
+		System.out.println("小");
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			Staff us = staffmapper.selectuser(name, password);
@@ -43,9 +43,9 @@ public class staffAction {
 	// 获取用户名
 		@PostMapping("/denglu2")
 		public Staff delu2(HttpSession session) {
-			Staff us  =(Staff) session.getAttribute("user");
-			return us;
-		}
+		Staff us  =(Staff) session.getAttribute("user");
+		return us;
+	}
 
 
 	// 手机号登录也验证
@@ -82,4 +82,5 @@ public class staffAction {
 		}
 		return map;
 	}
+	
 }

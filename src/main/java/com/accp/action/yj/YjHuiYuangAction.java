@@ -22,15 +22,15 @@ public class YjHuiYuangAction {
 	@PostMapping("/selectHuiYuangPage")
 	public Map<String,Object> selectHuiYuangPage(Integer pageNum,Integer pageSize,String sousuo){
 		Map<String, Object> map = new HashMap<String, Object>();
-//		try {
-//			PageInfo<HuiYuang> page=hyBiz.selectHuiYuangPage(pageNum, pageSize, sousuo);
-//			map.put("data", page);
-//			map.put("code", "200");
-//			System.out.println("数据会员"+JSON.toJSONString(page));
-//		} catch (Exception e) {
-//			map.put("code", "400");
-//			e.printStackTrace();
-//		}
+	try {
+			PageInfo<HuiYuang> page=hyBiz.selectHuiYuangPage(pageNum, pageSize, sousuo);
+			map.put("data", page);
+			map.put("code", "200");
+			System.out.println("数据会员"+JSON.toJSONString(page));
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
+	}
 		return map;
 	}
 }

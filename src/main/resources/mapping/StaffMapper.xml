@@ -19,6 +19,7 @@
   	 <if test="staffname != null and staffname != ''" >
           	AND `staffName` = #{staffname}
      </if>
+
   </select>
   <!-- 密码验证登录 -->
   <select id="selectuser" resultType="com.accp.pojo.Staff">
