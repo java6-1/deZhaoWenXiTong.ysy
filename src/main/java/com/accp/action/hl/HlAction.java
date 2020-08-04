@@ -285,7 +285,7 @@ public class HlAction {
 	
 	@GetMapping("updateBy/{bz1}/{wxxmid}")
 	public Map<String, Object> updateBy(@PathVariable Integer bz1,@PathVariable Integer wxxmid) {
-		wxxmBiz.updateBy(bz1, wxxmid);
+		wxxmBiz.updateBy(bz1,  wxxmid);
 		Map<String, Object> message = new HashMap<String, Object>();
 		message.put("code", "200");
 		return  message;
