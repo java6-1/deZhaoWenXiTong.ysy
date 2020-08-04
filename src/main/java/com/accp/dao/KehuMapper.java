@@ -16,8 +16,8 @@ public interface KehuMapper {
 	int insertSelective(Kehu record);
 
 	Kehu selectByPrimaryKey(Integer kehuid);
-
-	int updateByPrimaryKeySelective(Kehu record);
+	//修改客户
+	int updateByPrimaryKeySelective(@Param("kehu")Kehu kehu);
 
 	int updateByPrimaryKey(Kehu record);
 
@@ -34,7 +34,8 @@ public interface KehuMapper {
 
 	// 新增车辆
 	int insertkhcl(@Param("khcl") Khcl khcl);
-
+	//删除车俩
+	int deleteKhcl(@Param("khclid")Integer khclid);
 	// 删除客户
 	int deletekehu(@Param("kehuid") String kehuid);
 }

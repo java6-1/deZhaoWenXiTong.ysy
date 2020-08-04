@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yj.KuhuBiz;
 import com.accp.pojo.Kehu;
+import com.accp.pojo.Khcl;
 import com.alibaba.fastjson.JSON;
 
 @RestController
@@ -80,10 +81,50 @@ public class YjKehuAction {
 		try {
 			kehuservice.deletekehu(kehuid);
 			map.put("code", "200");
-		}catch (Exception e) {
+		} catch (Exception e) {
 			map.put("code", "400");
 			e.printStackTrace();
 		}
 		return map;
 	}
+
+	// 新增车俩
+	@PostMapping("/insertcl")
+		public Map<String, Object> insertcl(@RequestBody Khcl khcl) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			try {
+				kehuservice.insertkehucl(khcl);
+				map.put("code", "200");
+			}catch (Exception e) {
+				map.put("code", "400");
+				e.printStackTrace();
+			}
+			return map;
+		}
+	// 删除车辆
+	@GetMapping("/deleteKhcl")
+	public Map<String, Object> deleteKhcl(Integer khclid) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			kehuservice.deleteKhcl(khclid);
+			map.put("code", "200");
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
+		}
+		return map;
+	}
+	// 修改客户
+		@PostMapping("/updateKeHu")
+		public Map<String, Object> updateKeHu(@RequestBody Kehu kehu) {
+			Map<String, Object> map = new HashMap<String, Object>();
+			try {
+				kehuservice.updateByPrimaryKeySelective(kehu);
+				map.put("code", "200");
+			} catch (Exception e) {
+				map.put("code", "400");
+				e.printStackTrace();
+			}
+			return map;
+		}
 }

@@ -52,11 +52,16 @@
 			(#{khcl.kehuid},#{khcl.jiescph},#{khcl.khclpp}
 			,#{khcl.khcljsy},#{khcl.khcldh},#{khcl.khcljcr},#{khcl.khclrq})
 	</insert>
+	<!--删除车俩  -->
+	<delete id="deleteKhcl">
+		DELETE FROM `khcl` WHERE `khclId`=#{khclid}
+	</delete>
 	<!-- 删除客户与车俩 --> 
 	<delete id="deletekehu">
 		delete from kehu where kehuId=#{kehuid};
 		delete from khcl where kehuId=#{kehuid}
 	</delete>
+	
 	<sql id="Base_Column_List">
 		kehuId, kehubm, kehumc, kehudz, kehusjhm, kehusr, kehusq,
 		kehuxc, kehubz,
@@ -225,66 +230,67 @@
 			</if>
 		</trim>
 	</insert>
+	<!--修改客户  -->
 	<update id="updateByPrimaryKeySelective"
 		parameterType="com.accp.pojo.Kehu">
 		update kehu
 		<set>
-			<if test="kehubm != null">
-				kehubm = #{kehubm,jdbcType=VARCHAR},
+			<if test="kehu.kehubm != null">
+				kehubm = #{kehu.kehubm,jdbcType=VARCHAR},
 			</if>
-			<if test="kehumc != null">
-				kehumc = #{kehumc,jdbcType=VARCHAR},
+			<if test="kehu.kehumc != null">
+				kehumc = #{kehu.kehumc,jdbcType=VARCHAR},
 			</if>
-			<if test="kehudz != null">
-				kehudz = #{kehudz,jdbcType=VARCHAR},
+			<if test="kehu.kehudz != null">
+				kehudz = #{kehu.kehudz,jdbcType=VARCHAR},
 			</if>
-			<if test="kehusjhm != null">
-				kehusjhm = #{kehusjhm,jdbcType=VARCHAR},
+			<if test="kehu.kehusjhm != null">
+				kehusjhm = #{kehu.kehusjhm,jdbcType=VARCHAR},
 			</if>
-			<if test="kehusr != null">
-				kehusr = #{kehusr,jdbcType=DATE},
+			<if test="kehu.kehusr != null">
+				kehusr = #{kehu.kehusr,jdbcType=DATE},
 			</if>
-			<if test="kehusq != null">
-				kehusq = #{kehusq,jdbcType=VARCHAR},
+			<if test="kehu.kehusq != null">
+				kehusq = #{kehu.kehusq,jdbcType=VARCHAR},
 			</if>
-			<if test="kehuxc != null">
-				kehuxc = #{kehuxc,jdbcType=VARCHAR},
+			<if test="kehu.kehuxc != null">
+				kehuxc = #{kehu.kehuxc,jdbcType=VARCHAR},
 			</if>
-			<if test="kehubz != null">
-				kehubz = #{kehubz,jdbcType=VARCHAR},
+			<if test="kehu.kehubz != null">
+				kehubz = #{kehu.kehubz,jdbcType=VARCHAR},
 			</if>
-			<if test="kehushen != null">
-				kehushen = #{kehushen,jdbcType=VARCHAR},
+			<if test="kehu.kehushen != null">
+				kehushen = #{kehu.kehushen,jdbcType=VARCHAR},
 			</if>
-			<if test="kehushi != null">
-				kehushi = #{kehushi,jdbcType=VARCHAR},
+			<if test="kehu.kehushi != null">
+				kehushi = #{kehu.kehushi,jdbcType=VARCHAR},
 			</if>
-			<if test="kehuqu != null">
-				kehuqu = #{kehuqu,jdbcType=VARCHAR},
+			<if test="kehu.kehuqu != null">
+				kehuqu = #{kehu.kehuqu,jdbcType=VARCHAR},
 			</if>
-			<if test="kehuhystart != null">
-				kehuhystart = #{kehuhystart,jdbcType=INTEGER},
+			<if test="kehu.kehuhystart != null">
+				kehuhystart = #{kehu.kehuhystart,jdbcType=INTEGER},
 			</if>
-			<if test="kehudqjf != null">
-				kehudqjf = #{kehudqjf,jdbcType=INTEGER},
+			<if test="kehu.kehudqjf != null">
+				kehudqjf = #{kehu.kehudqjf,jdbcType=INTEGER},
 			</if>
-			<if test="kehujrsj != null">
-				kehujrsj = #{kehujrsj,jdbcType=DATE},
+			<if test="kehu.kehujrsj != null">
+				kehujrsj = #{kehu.kehujrsj,jdbcType=DATE},
 			</if>
-			<if test="kehuzjf != null">
-				kehuzjf = #{kehuzjf,jdbcType=INTEGER},
+			<if test="kehu.kehuzjf != null">
+				kehuzjf = #{kehu.kehuzjf,jdbcType=INTEGER},
 			</if>
-			<if test="bz1 != null">
-				bz1 = #{bz1,jdbcType=INTEGER},
+			<if test="kehu.bz1 != null">
+				bz1 = #{kehu.bz1,jdbcType=INTEGER},
 			</if>
-			<if test="bz2 != null">
-				bz2 = #{bz2,jdbcType=INTEGER},
+			<if test="kehu.bz2 != null">
+				bz2 = #{kehu.bz2,jdbcType=INTEGER},
 			</if>
-			<if test="bz3 != null">
-				bz3 = #{bz3,jdbcType=INTEGER},
+			<if test="kehu.bz3 != null">
+				bz3 = #{kehu.bz3,jdbcType=INTEGER},
 			</if>
 		</set>
-		where kehuId = #{kehuid,jdbcType=INTEGER}
+		where kehuId = #{kehu.kehuid,jdbcType=INTEGER}
 	</update>
 	<update id="updateByPrimaryKey"
 		parameterType="com.accp.pojo.Kehu">

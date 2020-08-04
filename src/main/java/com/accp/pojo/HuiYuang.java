@@ -5,6 +5,8 @@ import java.util.Date;
 public class HuiYuang {
     private Integer huiyuanid;
 
+    private String phone;
+
     private String huiyuanname;
 
     private String huiyuanpwd;
@@ -19,6 +21,14 @@ public class HuiYuang {
 
     public void setHuiyuanid(Integer huiyuanid) {
         this.huiyuanid = huiyuanid;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getHuiyuanname() {

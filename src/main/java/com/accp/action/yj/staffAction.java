@@ -26,6 +26,7 @@ public class staffAction {
 	// 账号密码登录
 	@PostMapping("/denglu1")
 	public Map<String, Object> delu1(String name, String password, HttpSession session) {
+	
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			Staff us = staffmapper.selectuser(name, password);
