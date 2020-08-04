@@ -10,7 +10,7 @@ import com.accp.pojo.Staff;
 public interface StaffMapper {
 
     //密码验证
-    Staff selectuser(@Param("staffAccount")String staffAccount,@Param("staffPawss")String staffPawss);
+    Staff selectuserl(@Param("staffAccount")String staffAccount,@Param("staffPawss")String staffPawss);
     //手机号验证
     Staff selectuserPhone(@Param("staff")String staff);
 

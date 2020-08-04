@@ -29,7 +29,7 @@ public class staffAction {
 		System.out.println("小");
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			Staff us = staffmapper.selectuser(name, password);
+			Staff us = staffmapper.selectuserl(name, password);
 			map.put("data", us);
 			session.setAttribute("user", us);
 			map.put("code", "200");

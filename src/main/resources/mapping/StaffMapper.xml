@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.accp.dao.StaffMapper" >
-<<<<<<< HEAD
- 
-=======
+
   <resultMap id="BaseResultMap" type="com.accp.pojo.Staff" >
     <id column="staffID" property="staffid" jdbcType="INTEGER" />
     <result column="postId" property="postid" jdbcType="INTEGER" />
@@ -37,17 +35,10 @@
 		autoMapping="true">
 	</association>
   </resultMap>
->>>>>>> branch 'master' of https://github.com/java6-1/deZhaoWenXiTong.ysy.git
-  
-<<<<<<< HEAD
-   <!--查询技工星级-->
-  <select id="selecBybzj" resultType="com.accp.pojo.Staff" 	parameterType="com.accp.pojo.Xj">
-=======
-  
+
   
   <!--查询技工星级-->
   <select id="selecBybzj"  resultMap="BaseResultMap">
->>>>>>> branch 'master' of https://github.com/java6-1/deZhaoWenXiTong.ysy.git
   	SELECT * FROM `staff` INNER JOIN `xj` ON `staff`.`xjId` = `xj`.`xjId` WHERE `staff`.`staffName` = #{staffname}
   </select> 
   
@@ -65,7 +56,7 @@
 
   </select>
   <!-- 密码验证登录 -->
-  <select id="selectuser" resultType="com.accp.pojo.Staff">
+  <select id="selectuserl" resultType="com.accp.pojo.Staff" >
   	SELECT *FROM `staff` WHERE `staffAccount`=#{staffAccount} AND `staffPawss`=#{staffPawss}
   </select>
   <!-- 电话验证登录 -->
