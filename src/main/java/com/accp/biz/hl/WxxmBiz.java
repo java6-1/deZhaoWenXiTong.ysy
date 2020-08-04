@@ -22,7 +22,18 @@ public class WxxmBiz {
 	}
 	
 	
-	public List<Wxxm> selectByP(String wxxmname){
-		return wxxmMapper.selectByP(wxxmname);
+	public List<Wxxm> selectByP(Integer wxtypeid){
+		return wxxmMapper.selectByP(wxtypeid);
+	}
+	
+	/*新增维修记录主表 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
+	public int updateBy(Integer bz1,Integer wxxmid) {
+		return wxxmMapper.updateBy(bz1,wxxmid);
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
+	public int insertlist(List<Wxxm> record) {
+		return wxxmMapper.insertlist(record);
 	}
 }

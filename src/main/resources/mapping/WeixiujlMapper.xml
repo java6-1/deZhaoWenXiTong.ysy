@@ -3,6 +3,7 @@
 <mapper namespace="com.accp.dao.WeixiujlMapper" >
   <resultMap id="BaseResultMap" type="com.accp.pojo.Weixiujl" >
     <id column="weixiujlId" property="weixiujlid" jdbcType="INTEGER" />
+    <result column="khclph" property="khclph" jdbcType="VARCHAR" />
     <result column="khclId" property="khclid" jdbcType="INTEGER" />
     <result column="weixiujlBm" property="weixiujlbm" jdbcType="VARCHAR" />
     <result column="weixiujlName" property="weixiujlname" jdbcType="VARCHAR" />
@@ -20,21 +21,26 @@
     <result column="weixiulic" property="weixiulic" jdbcType="DECIMAL" />
     <result column="weixiujg" property="weixiujg" jdbcType="DECIMAL" />
     <result column="starttime" property="starttime" jdbcType="DATE" />
-    <result column="endstart" property="endstart" jdbcType="DATE" />
-    
+    <result column="khclcp" property="khclcp" jdbcType="VARCHAR" />
+    <result column="clzr" property="clzr" jdbcType="VARCHAR" />
+    <result column="cljsy" property="cljsy" jdbcType="VARCHAR" />
+    <result column="clpp" property="clpp" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    weixiujlId, khclId, weixiujlBm, weixiujlName, weixiujlPice, weixiujlhyj, weixiujlvipj, 
-    weixiujlxyj, weixiujlbz, weixiujlzt, weixiujlfg, weixiuzrr, weixiucfje, weixiucgcs, 
-    weixiutype, weixiulic, weixiujg, starttime, endstart, weixiubz, bz2, bz3
+    weixiujlId, khclph, khclId, weixiujlBm, weixiujlName, weixiujlPice, weixiujlhyj, 
+    weixiujlvipj, weixiujlxyj, weixiujlbz, weixiujlzt, weixiujlfg, weixiuzrr, weixiucfje, 
+    weixiucgcs, weixiutype, weixiulic, weixiujg, starttime, khclcp, clzr, cljsy, clpp
   </sql>
   
-  
-  
-	<!--   新增维修记录表 -->
-    <insert id="insertSelective" parameterType="com.accp.pojo.Weixiujl" useGeneratedKeys="true" keyProperty="weixiujlid" keyColumn="weixiujlId" >
+   <insert id="insertSelective" parameterType="com.accp.pojo.Weixiujl"  useGeneratedKeys="true" keyProperty="weixiujlid" keyColumn="weixiujlId">
     insert into weixiujl
     <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="weixiujlid != null" >
+        weixiujlId,
+      </if>
+      <if test="khclph != null" >
+        khclph,
+      </if>
       <if test="khclid != null" >
         khclId,
       </if>
@@ -86,12 +92,26 @@
       <if test="starttime != null" >
         starttime,
       </if>
-      <if test="endstart != null" >
-        endstart,
+      <if test="khclcp != null" >
+        khclcp,
       </if>
-      
+      <if test="clzr != null" >
+        clzr,
+      </if>
+      <if test="cljsy != null" >
+        cljsy,
+      </if>
+      <if test="clpp != null" >
+        clpp,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="weixiujlid != null" >
+        #{weixiujlid,jdbcType=INTEGER},
+      </if>
+      <if test="khclph != null" >
+        #{khclph,jdbcType=VARCHAR},
+      </if>
       <if test="khclid != null" >
         #{khclid,jdbcType=INTEGER},
       </if>
@@ -143,15 +163,22 @@
       <if test="starttime != null" >
         #{starttime,jdbcType=DATE},
       </if>
-      <if test="endstart != null" >
-        #{endstart,jdbcType=DATE},
+      <if test="khclcp != null" >
+        #{khclcp,jdbcType=VARCHAR},
+      </if>
+      <if test="clzr != null" >
+        #{clzr,jdbcType=VARCHAR},
+      </if>
+      <if test="cljsy != null" >
+        #{cljsy,jdbcType=VARCHAR},
+      </if>
+      <if test="clpp != null" >
+        #{clpp,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   
-  
-  
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+ <!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from weixiujl
@@ -162,27 +189,174 @@
     where weixiujlId = #{weixiujlid,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.accp.pojo.Weixiujl" >
-    insert into weixiujl (weixiujlId, khclId, weixiujlBm, 
-      weixiujlName, weixiujlPice, weixiujlhyj, 
-      weixiujlvipj, weixiujlxyj, weixiujlbz, 
-      weixiujlzt, weixiujlfg, weixiuzrr, 
-      weixiucfje, weixiucgcs, weixiutype, 
-      weixiulic, weixiujg, starttime, 
-      endstart, bz1, bz2, bz3
-      )
-    values (#{weixiujlid,jdbcType=INTEGER}, #{khclid,jdbcType=INTEGER}, #{weixiujlbm,jdbcType=VARCHAR}, 
-      #{weixiujlname,jdbcType=VARCHAR}, #{weixiujlpice,jdbcType=DECIMAL}, #{weixiujlhyj,jdbcType=DECIMAL}, 
-      #{weixiujlvipj,jdbcType=DECIMAL}, #{weixiujlxyj,jdbcType=DECIMAL}, #{weixiujlbz,jdbcType=VARCHAR}, 
-      #{weixiujlzt,jdbcType=INTEGER}, #{weixiujlfg,jdbcType=VARCHAR}, #{weixiuzrr,jdbcType=VARCHAR}, 
-      #{weixiucfje,jdbcType=DECIMAL}, #{weixiucgcs,jdbcType=INTEGER}, #{weixiutype,jdbcType=INTEGER}, 
-      #{weixiulic,jdbcType=DECIMAL}, #{weixiujg,jdbcType=DECIMAL}, #{starttime,jdbcType=DATE}, 
-      #{endstart,jdbcType=DATE}, #{bz1,jdbcType=INTEGER}, #{bz2,jdbcType=INTEGER}, #{bz3,jdbcType=INTEGER}
-      )
+    insert into weixiujl (weixiujlId, khclph, khclId, 
+      weixiujlBm, weixiujlName, weixiujlPice, 
+      weixiujlhyj, weixiujlvipj, weixiujlxyj, 
+      weixiujlbz, weixiujlzt, weixiujlfg, 
+      weixiuzrr, weixiucfje, weixiucgcs, 
+      weixiutype, weixiulic, weixiujg, 
+      starttime, khclcp, clzr, 
+      cljsy, clpp)
+    values (#{weixiujlid,jdbcType=INTEGER}, #{khclph,jdbcType=VARCHAR}, #{khclid,jdbcType=INTEGER}, 
+      #{weixiujlbm,jdbcType=VARCHAR}, #{weixiujlname,jdbcType=VARCHAR}, #{weixiujlpice,jdbcType=DECIMAL}, 
+      #{weixiujlhyj,jdbcType=DECIMAL}, #{weixiujlvipj,jdbcType=DECIMAL}, #{weixiujlxyj,jdbcType=DECIMAL}, 
+      #{weixiujlbz,jdbcType=VARCHAR}, #{weixiujlzt,jdbcType=INTEGER}, #{weixiujlfg,jdbcType=VARCHAR}, 
+      #{weixiuzrr,jdbcType=VARCHAR}, #{weixiucfje,jdbcType=DECIMAL}, #{weixiucgcs,jdbcType=INTEGER}, 
+      #{weixiutype,jdbcType=INTEGER}, #{weixiulic,jdbcType=DECIMAL}, #{weixiujg,jdbcType=DECIMAL}, 
+      #{starttime,jdbcType=DATE}, #{khclcp,jdbcType=VARCHAR}, #{clzr,jdbcType=VARCHAR}, 
+      #{cljsy,jdbcType=VARCHAR}, #{clpp,jdbcType=VARCHAR})
   </insert>
-
+  <insert id="insertSelective" parameterType="com.accp.pojo.Weixiujl" >
+    insert into weixiujl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="weixiujlid != null" >
+        weixiujlId,
+      </if>
+      <if test="khclph != null" >
+        khclph,
+      </if>
+      <if test="khclid != null" >
+        khclId,
+      </if>
+      <if test="weixiujlbm != null" >
+        weixiujlBm,
+      </if>
+      <if test="weixiujlname != null" >
+        weixiujlName,
+      </if>
+      <if test="weixiujlpice != null" >
+        weixiujlPice,
+      </if>
+      <if test="weixiujlhyj != null" >
+        weixiujlhyj,
+      </if>
+      <if test="weixiujlvipj != null" >
+        weixiujlvipj,
+      </if>
+      <if test="weixiujlxyj != null" >
+        weixiujlxyj,
+      </if>
+      <if test="weixiujlbz != null" >
+        weixiujlbz,
+      </if>
+      <if test="weixiujlzt != null" >
+        weixiujlzt,
+      </if>
+      <if test="weixiujlfg != null" >
+        weixiujlfg,
+      </if>
+      <if test="weixiuzrr != null" >
+        weixiuzrr,
+      </if>
+      <if test="weixiucfje != null" >
+        weixiucfje,
+      </if>
+      <if test="weixiucgcs != null" >
+        weixiucgcs,
+      </if>
+      <if test="weixiutype != null" >
+        weixiutype,
+      </if>
+      <if test="weixiulic != null" >
+        weixiulic,
+      </if>
+      <if test="weixiujg != null" >
+        weixiujg,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="khclcp != null" >
+        khclcp,
+      </if>
+      <if test="clzr != null" >
+        clzr,
+      </if>
+      <if test="cljsy != null" >
+        cljsy,
+      </if>
+      <if test="clpp != null" >
+        clpp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="weixiujlid != null" >
+        #{weixiujlid,jdbcType=INTEGER},
+      </if>
+      <if test="khclph != null" >
+        #{khclph,jdbcType=VARCHAR},
+      </if>
+      <if test="khclid != null" >
+        #{khclid,jdbcType=INTEGER},
+      </if>
+      <if test="weixiujlbm != null" >
+        #{weixiujlbm,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiujlname != null" >
+        #{weixiujlname,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiujlpice != null" >
+        #{weixiujlpice,jdbcType=DECIMAL},
+      </if>
+      <if test="weixiujlhyj != null" >
+        #{weixiujlhyj,jdbcType=DECIMAL},
+      </if>
+      <if test="weixiujlvipj != null" >
+        #{weixiujlvipj,jdbcType=DECIMAL},
+      </if>
+      <if test="weixiujlxyj != null" >
+        #{weixiujlxyj,jdbcType=DECIMAL},
+      </if>
+      <if test="weixiujlbz != null" >
+        #{weixiujlbz,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiujlzt != null" >
+        #{weixiujlzt,jdbcType=INTEGER},
+      </if>
+      <if test="weixiujlfg != null" >
+        #{weixiujlfg,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiuzrr != null" >
+        #{weixiuzrr,jdbcType=VARCHAR},
+      </if>
+      <if test="weixiucfje != null" >
+        #{weixiucfje,jdbcType=DECIMAL},
+      </if>
+      <if test="weixiucgcs != null" >
+        #{weixiucgcs,jdbcType=INTEGER},
+      </if>
+      <if test="weixiutype != null" >
+        #{weixiutype,jdbcType=INTEGER},
+      </if>
+      <if test="weixiulic != null" >
+        #{weixiulic,jdbcType=DECIMAL},
+      </if>
+      <if test="weixiujg != null" >
+        #{weixiujg,jdbcType=DECIMAL},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=DATE},
+      </if>
+      <if test="khclcp != null" >
+        #{khclcp,jdbcType=VARCHAR},
+      </if>
+      <if test="clzr != null" >
+        #{clzr,jdbcType=VARCHAR},
+      </if>
+      <if test="cljsy != null" >
+        #{cljsy,jdbcType=VARCHAR},
+      </if>
+      <if test="clpp != null" >
+        #{clpp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Weixiujl" >
     update weixiujl
     <set >
+      <if test="khclph != null" >
+        khclph = #{khclph,jdbcType=VARCHAR},
+      </if>
       <if test="khclid != null" >
         khclId = #{khclid,jdbcType=INTEGER},
       </if>
@@ -234,24 +408,25 @@
       <if test="starttime != null" >
         starttime = #{starttime,jdbcType=DATE},
       </if>
-      <if test="endstart != null" >
-        endstart = #{endstart,jdbcType=DATE},
+      <if test="khclcp != null" >
+        khclcp = #{khclcp,jdbcType=VARCHAR},
       </if>
-      <if test="bz1 != null" >
-        bz1 = #{bz1,jdbcType=INTEGER},
+      <if test="clzr != null" >
+        clzr = #{clzr,jdbcType=VARCHAR},
       </if>
-      <if test="bz2 != null" >
-        bz2 = #{bz2,jdbcType=INTEGER},
+      <if test="cljsy != null" >
+        cljsy = #{cljsy,jdbcType=VARCHAR},
       </if>
-      <if test="bz3 != null" >
-        bz3 = #{bz3,jdbcType=INTEGER},
+      <if test="clpp != null" >
+        clpp = #{clpp,jdbcType=VARCHAR},
       </if>
     </set>
     where weixiujlId = #{weixiujlid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.accp.pojo.Weixiujl" >
     update weixiujl
-    set khclId = #{khclid,jdbcType=INTEGER},
+    set khclph = #{khclph,jdbcType=VARCHAR},
+      khclId = #{khclid,jdbcType=INTEGER},
       weixiujlBm = #{weixiujlbm,jdbcType=VARCHAR},
       weixiujlName = #{weixiujlname,jdbcType=VARCHAR},
       weixiujlPice = #{weixiujlpice,jdbcType=DECIMAL},
@@ -268,10 +443,10 @@
       weixiulic = #{weixiulic,jdbcType=DECIMAL},
       weixiujg = #{weixiujg,jdbcType=DECIMAL},
       starttime = #{starttime,jdbcType=DATE},
-      endstart = #{endstart,jdbcType=DATE},
-      bz1 = #{bz1,jdbcType=INTEGER},
-      bz2 = #{bz2,jdbcType=INTEGER},
-      bz3 = #{bz3,jdbcType=INTEGER}
+      khclcp = #{khclcp,jdbcType=VARCHAR},
+      clzr = #{clzr,jdbcType=VARCHAR},
+      cljsy = #{cljsy,jdbcType=VARCHAR},
+      clpp = #{clpp,jdbcType=VARCHAR}
     where weixiujlId = #{weixiujlid,jdbcType=INTEGER}
-  </update>
+  </update> -->
 </mapper>

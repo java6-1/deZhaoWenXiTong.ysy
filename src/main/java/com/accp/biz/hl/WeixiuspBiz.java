@@ -36,4 +36,8 @@ public class WeixiuspBiz {
 		return weixiuspMapper.selectByKey(weixiujlid);
 		
 	}
+	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
+	public int insertlist(List<Weixiusp> record) {
+		return weixiuspMapper.insertlist(record);
+	}
 }
