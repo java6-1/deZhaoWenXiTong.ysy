@@ -2,11 +2,16 @@ package com.accp.dao;
 
 import java.util.List;
 
+
 import org.apache.ibatis.annotations.Select;
 
 import com.accp.pojo.Wxtype;
 
 public interface WxtypeMapper {
+	
+	List<Wxtype> select();
+	
+	
     int deleteByPrimaryKey(Integer wxtypeid);
 
     int insert(Wxtype record);

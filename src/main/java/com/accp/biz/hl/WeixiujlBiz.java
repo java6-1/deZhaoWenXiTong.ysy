@@ -1,4 +1,4 @@
-package com.accp.biz.wlw;
+package com.accp.biz.hl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,22 +6,20 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.StaffMapper;
-import com.accp.pojo.Staff;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
+import com.accp.dao.WeixiujlMapper;
+import com.accp.pojo.Weixiujl;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-public class StaffBizs {
+public class WeixiujlBiz {
 	@Autowired
-	private StaffMapper staffMapper;
+	private WeixiujlMapper weixiujlMapper;
 	
-	//查询全部
-	public PageInfo<Staff> queryByStaff(Integer pageNum, Integer pageSize) {
-		PageHelper.startPage(pageNum, pageSize);
-		return new PageInfo<Staff>(staffMapper.queryStaff());
-
+	
+	/*新增维修记录主表 */
+	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
+	public int insertSelective(Weixiujl record) {
+		System.out.println(record.getKhclid());
+		return weixiujlMapper.insertSelective(record);
 	}
-	
 }
