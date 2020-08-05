@@ -127,7 +127,7 @@ public class StaffActions {
 	@GetMapping("DeStaff/{staffid}")
 	public Map<String, Object> DeStaff(@PathVariable Integer staffid){
 		int count= staffBizs.DeStaff(staffid);
-		System.out.println(" ");
+		System.out.println("11 ");
 		Map<String, Object> message = new HashMap<String, Object>();
 		message.put("code", "200");
 		message.put("msg", "ok");
