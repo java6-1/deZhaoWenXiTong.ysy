@@ -95,5 +95,57 @@ public class StaffActions {
 		message.put("code", "200");
 		message.put("msg", "ok");
 		return message;
-		}
+	}
+	
+	//查询全部部根据分页
+	@GetMapping("query")
+	public List<Staff> query(){
+		List<Staff> list = staffBizs.query();
+		return list;
+	}
+	
+	//离职查询
+	@GetMapping("queryStaffs/{pageNum}/{pageSize}")
+	public PageInfo<Staff> queryByAuctions(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
+		System.out.println("进入yixia1");
+		return staffBizs.queryByStaffs(pageNum, pageSize);
+	}
+	
+	//离职登记
+	@PostMapping("XgStaff")
+	@ResponseBody
+	public Map<String, Object> XgStaff(@RequestBody Staff staff){
+		System.out.println(JSON.toJSONString(staff));
+		int count= staffBizs.XgStaff(staff);
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		message.put("msg", "ok");
+		return message;
+	}
+	
+	//离职删除
+	@GetMapping("DeStaff/{staffid}")
+	public Map<String, Object> DeStaff(@PathVariable Integer staffid){
+		int count= staffBizs.DeStaff(staffid);
+		Map<String, Object> message = new HashMap<String, Object>();
+		message.put("code", "200");
+		message.put("msg", "ok");
+		return message;
+	}
+	
+	//根据名字模糊查询离职
+	@GetMapping("queryByName/{staffname}")
+	public List<Staff> queryByName(@PathVariable String staffname){
+		String staffnames="%"+staffname+"%";
+		List<Staff> list = staffBizs.queryByname(staffnames);
+		return list;
+	}
+	
+	//根据名字模糊查询员工
+	@GetMapping("queryByNames/{staffname}")
+	public List<Staff> queryByNames(@PathVariable String staffname){
+		String staffnames="%"+staffname+"%";
+		List<Staff> list = staffBizs.queryBynames(staffnames);
+		return list;
+	}
 }
