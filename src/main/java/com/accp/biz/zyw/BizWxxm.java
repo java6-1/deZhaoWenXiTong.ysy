@@ -29,12 +29,23 @@ public class BizWxxm {
 	public List<Wxtype> list() {
 		return wxmapper.List();
 	}
-	
-	public List<Wxxm> list2(Integer id) {
-		return wxxmmapper.query(id);
-	}
-	public PageInfo<Wxxm> list2(Integer pageNum,Integer id) {
+//	
+//	public List<Wxxm> list2(Integer id) {
+//		return wxxmmapper.query(id);
+//	}
+	public PageInfo<Wxxm> list2(Integer pageNum,Integer id,String wxname) {
 		  PageHelper.startPage(pageNum, 3);
-		  return new PageInfo<Wxxm>(wxxmmapper.query(id));
+		  return new PageInfo<Wxxm>(wxxmmapper.query(id,wxname));
 		 }
+	
+	public int ins(Wxxm record ) {
+		return wxxmmapper.insertSelective(record);
+	}
+	
+	public int del(Integer wxid) {
+		return wxxmmapper.deleteByPrimaryKey(wxid);
+	}
+	public int upda(Wxxm record) {
+		return wxxmmapper.updateByPrimaryKeySelective(record);
+	}
 }

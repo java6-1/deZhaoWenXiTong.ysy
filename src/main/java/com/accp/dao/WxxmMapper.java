@@ -22,7 +22,7 @@ public interface WxxmMapper {
 
     int updateByPrimaryKey(Wxxm record);
     
-    @Select("SELECT * FROM `wxxm` w,`wxtype` a\r\n" + 
-    		"WHERE w.`wxtypeId`=a.wxtypeId AND a.`wxtypeId`=#{id}")
-    List<Wxxm> query(Integer id);
+    @Select("<script>SELECT * FROM `wxxm` w,`wxtype` a\r\n" + 
+    		"WHERE w.`wxtypeId`=a.wxtypeId AND a.`wxtypeId`=#{id} <if test=\" wxname !=null and wxname !='' and wxname!='undefined'  \">AND wxxmName = #{wxname} </if></script>")
+    List<Wxxm> query(Integer id,String wxname);
 }

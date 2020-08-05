@@ -60,6 +60,18 @@
       <if test="bz3 != null" >
         bz3,
       </if>
+      <if test="bzjia != null" >
+        bzjia,
+      </if>
+      <if test="hyjia != null" >
+        hyjia,
+      </if>
+      <if test="vipjia != null" >
+        vipjia,
+      </if>
+        <if test="xyjia != null" >
+        xyjia,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="wxxmid != null" >
@@ -80,6 +92,18 @@
       <if test="bz3 != null" >
         #{bz3,jdbcType=INTEGER},
       </if>
+          <if test="bzjia != null" >
+        #{bzjia,jdbcType=DECIMAL},
+      </if>
+          <if test="hyjia != null" >
+        #{hyjia,jdbcType=DECIMAL},
+      </if>
+          <if test="vipjia != null" >
+        #{vipjia,jdbcType=DECIMAL},
+      </if>
+          <if test="xyjia != null" >
+        #{xyjia,jdbcType=DECIMAL},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Wxxm" >
@@ -99,6 +123,18 @@
       </if>
       <if test="bz3 != null" >
         bz3 = #{bz3,jdbcType=INTEGER},
+      </if>
+              <if test="bzjia != null" >
+       bzjia= #{bzjia,jdbcType=DECIMAL},
+      </if>
+          <if test="hyjia != null" >
+       hyjia= #{hyjia,jdbcType=DECIMAL},
+      </if>
+          <if test="vipjia != null" >
+      vipjia=  #{vipjia,jdbcType=DECIMAL},
+      </if>
+          <if test="xyjia != null" >
+       xyjia= #{xyjia,jdbcType=DECIMAL},
       </if>
     </set>
     where wxxmId = #{wxxmid,jdbcType=INTEGER}

@@ -1,5 +1,9 @@
 package com.accp.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
 import com.accp.pojo.Ghdw;
 
 public interface GhdwMapper {
@@ -14,4 +18,7 @@ public interface GhdwMapper {
     int updateByPrimaryKeySelective(Ghdw record);
 
     int updateByPrimaryKey(Ghdw record);
+    
+    @Select("SELECT * FROM `ghdw` ")
+    List<Ghdw> query(String diz);
 }
