@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.CaiDanMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.CaiDan" >
+    <id column="caiDanId" property="caidanid" jdbcType="INTEGER" />
+    <result column="menuName" property="menuname" jdbcType="VARCHAR" />
+    <result column="pageUrl" property="pageurl" jdbcType="VARCHAR" />
+    <result column="caiDanIdFu" property="caidanidfu" jdbcType="INTEGER" />
+    <result column="dengJi" property="dengji" jdbcType="INTEGER" />
+    <result column="controllerAction" property="controlleraction" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    caiDanId, menuName, pageUrl, caiDanIdFu, dengJi, controllerAction
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from caidan
+    where caiDanId = #{caidanid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from caidan
+    where caiDanId = #{caidanid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.CaiDan" >
+    insert into caidan (caiDanId, menuName, pageUrl, 
+      caiDanIdFu, dengJi, controllerAction
+      )
+    values (#{caidanid,jdbcType=INTEGER}, #{menuname,jdbcType=VARCHAR}, #{pageurl,jdbcType=VARCHAR}, 
+      #{caidanidfu,jdbcType=INTEGER}, #{dengji,jdbcType=INTEGER}, #{controlleraction,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.CaiDan" >
+    insert into caidan
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="caidanid != null" >
+        caiDanId,
+      </if>
+      <if test="menuname != null" >
+        menuName,
+      </if>
+      <if test="pageurl != null" >
+        pageUrl,
+      </if>
+      <if test="caidanidfu != null" >
+        caiDanIdFu,
+      </if>
+      <if test="dengji != null" >
+        dengJi,
+      </if>
+      <if test="controlleraction != null" >
+        controllerAction,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="caidanid != null" >
+        #{caidanid,jdbcType=INTEGER},
+      </if>
+      <if test="menuname != null" >
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="pageurl != null" >
+        #{pageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="caidanidfu != null" >
+        #{caidanidfu,jdbcType=INTEGER},
+      </if>
+      <if test="dengji != null" >
+        #{dengji,jdbcType=INTEGER},
+      </if>
+      <if test="controlleraction != null" >
+        #{controlleraction,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.CaiDan" >
+    update caidan
+    <set >
+      <if test="menuname != null" >
+        menuName = #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="pageurl != null" >
+        pageUrl = #{pageurl,jdbcType=VARCHAR},
+      </if>
+      <if test="caidanidfu != null" >
+        caiDanIdFu = #{caidanidfu,jdbcType=INTEGER},
+      </if>
+      <if test="dengji != null" >
+        dengJi = #{dengji,jdbcType=INTEGER},
+      </if>
+      <if test="controlleraction != null" >
+        controllerAction = #{controlleraction,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where caiDanId = #{caidanid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.CaiDan" >
+    update caidan
+    set menuName = #{menuname,jdbcType=VARCHAR},
+      pageUrl = #{pageurl,jdbcType=VARCHAR},
+      caiDanIdFu = #{caidanidfu,jdbcType=INTEGER},
+      dengJi = #{dengji,jdbcType=INTEGER},
+      controllerAction = #{controlleraction,jdbcType=VARCHAR}
+    where caiDanId = #{caidanid,jdbcType=INTEGER}
+  </update>
+</mapper>

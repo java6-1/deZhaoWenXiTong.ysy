@@ -27,17 +27,14 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.accp.dao" targetProject="src/main/java">  
             <property name="enableSubPackages" value="true"/>  
         </javaClientGenerator>    
-         
+         <!-- mybatis-generator:generate   执行自动生成语句-->
         <!-- 
 		tableName是数据库中的表名或视图名
 		domainObjectName是实体类名
 		-->  
 		<!--表1-->
-<<<<<<< HEAD
-        <table tableName="HuiYuang" domainObjectName="HuiYuang" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
-
-=======
-        <table tableName="weixiujl" domainObjectName="Weixiujl" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
->>>>>>> branch 'master' of https://github.com/java6-1/deZhaoWenXiTong.ysy.git
+		<table tableName="jiaose" domainObjectName="JiaoSe" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+		<table tableName="CaiDan" domainObjectName="CaiDan" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="JiaoSeGongNeng" domainObjectName="JiaoSeGongNeng" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
     </context>  
 </generatorConfiguration>  

@@ -3,7 +3,16 @@ package com.accp.pojo;
 import java.util.Date;
 
 public class Staff {
-    private Integer staffid;
+	private JiaoSe jiaose;
+    public JiaoSe getJiaose() {
+		return jiaose;
+	}
+
+	public void setJiaose(JiaoSe jiaose) {
+		this.jiaose = jiaose;
+	}
+
+	private Integer staffid;
 
     private Integer postid;
 

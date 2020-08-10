@@ -1,72 +1,89 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.accp.dao.StaffMapper" >
+<mapper namespace="com.accp.dao.StaffMapper">
+<!-- 四表联查关系映射 -->
+	<resultMap id="BaseResultMap" type="com.accp.pojo.Staff">
+	<result column="staffName" property="staffname"
+			jdbcType="VARCHAR" />
+		<result column="staffId" property="staffid"
+			jdbcType="INTEGER" />
+		<result column="staffAccount" property="staffaccount"
+			jdbcType="VARCHAR" />
+		<result column="staffPawss" property="staffpawss"
+			jdbcType="VARCHAR" />
+		<association property="jiaose"
+			javaType="com.accp.pojo.JiaoSe" resultMap="JiaoSeMap" />
+	</resultMap>
+	<resultMap type="com.accp.pojo.JiaoSe" id="JiaoSeMap">
+		<id column="jiaoSeId" property="jiaoseid" jdbcType="INTEGER" />
+		<result column="biaoshi" property="biaoshi" jdbcType="VARCHAR" />
+		<result column="jiaoSeName" property="jiaosename" jdbcType="VARCHAR" />
 
-  <resultMap id="BaseResultMap" type="com.accp.pojo.Staff" >
-    <id column="staffID" property="staffid" jdbcType="INTEGER" />
-    <result column="postId" property="postid" jdbcType="INTEGER" />
-    <result column="bzId" property="bzid" jdbcType="INTEGER" />
-    <result column="xjId" property="xjid" jdbcType="INTEGER" />
-    <result column="qxID" property="qxid" jdbcType="INTEGER" />
-    <result column="staffName" property="staffname" jdbcType="VARCHAR" />
-    <result column="staffSex" property="staffsex" jdbcType="INTEGER" />
-    <result column="staffAccount" property="staffaccount" jdbcType="VARCHAR" />
-    <result column="staffPawss" property="staffpawss" jdbcType="VARCHAR" />
-    <result column="tStore" property="tstore" jdbcType="VARCHAR" />
-    <result column="sectionID" property="sectionid" jdbcType="INTEGER" />
-    <result column="position" property="position" jdbcType="VARCHAR" />
-    <result column="education" property="education" jdbcType="VARCHAR" />
-    <result column="edType" property="edtype" jdbcType="VARCHAR" />
-    <result column="school" property="school" jdbcType="VARCHAR" />
-    <result column="specialty" property="specialty" jdbcType="VARCHAR" />
-    <result column="sfID" property="sfid" jdbcType="VARCHAR" />
-    <result column="yhdz" property="yhdz" jdbcType="VARCHAR" />
-    <result column="xjdz" property="xjdz" jdbcType="VARCHAR" />
-    <result column="staff" property="staff" jdbcType="VARCHAR" />
-    <result column="entryTime" property="entrytime" jdbcType="DATE" />
-    <result column="dimissionTime" property="dimissiontime" jdbcType="VARCHAR" />
-    <result column="cause" property="cause" jdbcType="VARCHAR" />
-    <result column="state" property="state" jdbcType="INTEGER" />
-    <result column="bz1" property="bz1" jdbcType="INTEGER" />
-    <result column="bz2" property="bz2" jdbcType="INTEGER" />
-    <result column="bz3" property="bz3" jdbcType="INTEGER" />
-    <result column="xjfei" property="xjfei" jdbcType="DOUBLE" />
-	<association property="xj"  javaType="com.accp.pojo.Xj"
-		autoMapping="true">
-	</association>
-  </resultMap>
+		<collection property="listCaiDan" ofType="com.accp.pojo.CaiDan">
+			<id column="caiDanId" property="caidanid" jdbcType="INTEGER" />
+			<result column="menuName" property="menuname" jdbcType="VARCHAR" />
+			  <result column="caiDanIdFu" property="caidanidfu" jdbcType="INTEGER" />
+			<result column="pageUrl" property="pageurl" jdbcType="VARCHAR" />
+			<result column="dengJi" property="dengji" jdbcType="INTEGER" />
+			<result column="caozuo" property="caozuo" jdbcType="VARCHAR" />
+			<result column="controllerAction" property="controlleraction" jdbcType="VARCHAR" />
+			<association property="fuCaiDan" column="caiDanIdFu"
+				select="selectFuCaiDan"></association>
+		</collection>
+	</resultMap>
+	<!-- 查询菜单父级菜单 -->
+	<select id="selectFuCaiDan" resultType="com.accp.pojo.CaiDan">
+		select *from `caidan`
+		where `caiDanId`=#{0}
+	</select>
+	<!-- 查询菜单权限 -->
+	<select id="yjSelectCaiDan" resultMap="BaseResultMap">
+		SELECT
+		a.`staffAccount`,a.`staffPawss`,a.staffName,a.staffId,
+		b.`jiaoSeId`,b.`biaoshi`,b.`jiaoSeName`,
+		c.caozuo,
+		d.`caiDanId`,d.`menuName`,d.`pageUrl`,d.`dengJi`,d.`caiDanIdFu`,d.`controllerAction`
+		FROM `staff` a
+		JOIN `jiaose` b ON a.bz1=b.jiaoSeId
+		JOIN `jiaosegongneng`
+		c ON c.jiaoSeId=b.jiaoSeId
+		JOIN `caidan` d ON c.caiDanId=d.caiDanId
+		WHERE a.`staffAccount`=#{name}
+	</select>
+	<!--查询技工星级 -->
+	<select id="selecBybzj" resultMap="BaseResultMap"> SELECT * FROM `staff` INNER
+		JOIN `xj` ON `staff`.`xjId` = `xj`.`xjId` WHERE `staff`.`staffName` =
+		#{staffname}
+	</select>
 
-  
-  <!--查询技工星级-->
-  <select id="selecBybzj"  resultMap="BaseResultMap">
-  	SELECT * FROM `staff` INNER JOIN `xj` ON `staff`.`xjId` = `xj`.`xjId` WHERE `staff`.`staffName` = #{staffname}
-  </select> 
-  
-  <!--   查询班组技工 -->
-  <select id="selecBybzjg" resultType="com.accp.pojo.Staff">
-  	SELECT * FROM `staff` WHERE  `bzId` IS NOT NULL
-  </select>
-  
-  <!--查询全部人员 -->
-  <select id="selec" resultType="com.accp.pojo.Staff">
-  	SELECT *FROM `staff` WHERE 1=1 
-  	 <if test="staffname != null and staffname != ''" >
-          	AND `staffName` = #{staffname}
-     </if>
+	<!-- 查询班组技工 -->
+	<select id="selecBybzjg" resultType="com.accp.pojo.Staff">
+		SELECT * FROM `staff` WHERE
+		`bzId` IS NOT NULL
+	</select>
 
-  </select>
-  <!-- 密码验证登录 -->
-  <select id="selectuserl" resultType="com.accp.pojo.Staff" >
-  	SELECT *FROM `staff` WHERE `staffAccount`=#{staffAccount} AND `staffPawss`=#{staffPawss}
-  </select>
-  <!-- 电话验证登录 -->
-  <select id="selectuserPhone" resultType="com.accp.pojo.Staff">
-  SELECT *FROM `staff` WHERE staff=#{staff}
-  </select>
-  
- 
-  
- 
- 
-  
+	<!--查询全部人员 -->
+	<select id="selec" resultType="com.accp.pojo.Staff">
+		SELECT *FROM `staff` WHERE 1=1
+		<if test="staffname != null and staffname != ''">
+			AND `staffName` = #{staffname}
+		</if>
+
+	</select>
+	<!-- 密码验证登录 -->
+	<select id="selectuserl" resultType="com.accp.pojo.Staff">
+		SELECT *FROM `staff` WHERE
+		`staffAccount`=#{staffAccount}
+	</select>
+	<!-- 电话验证登录 -->
+	<select id="selectuserPhone" resultType="com.accp.pojo.Staff">
+		SELECT *FROM `staff`
+		WHERE staff=#{staff}
+	</select>
+
+
+
+
+
+
 </mapper>

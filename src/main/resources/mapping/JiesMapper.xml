@@ -13,6 +13,24 @@
     <result column="bz2" property="bz2" jdbcType="INTEGER" />
     <result column="bz3" property="bz3" jdbcType="INTEGER" />
   </resultMap>
+  <select id="selectJiesWeiPage" resultType="com.accp.pojo.Jies">
+  	SELECT a.jiesId,a.jiesjcsj,a.jieswgsj,a.jieswxje,b.`jiescph`
+    		FROM `jies`  a
+    		JOIN `khcl`  b ON a.khclId=b.`khclId`
+    		WHERE a.`bz1`=0
+    		<if test="chepaihao!=null and chepaihao!=''">
+    			 AND b.jiescph=#{chepaihao}
+    		</if>
+  </select>
+  <select id="selectJiesJiePage" resultType="com.accp.pojo.Jies">
+  	SELECT a.jiesId,a.jiesjcsj,a.jieswgsj,a.jieswxje,b.`jiescph`
+    		FROM `jies`  a
+    		JOIN `khcl`  b ON a.khclId=b.`khclId`
+    		WHERE a.`bz1`=1
+    		<if test="chepaihao!=null and chepaihao!=''">
+    			 AND b.jiescph=#{chepaihao}
+    		</if>
+  </select>
   <sql id="Base_Column_List" >
     jiesId, khclId, jiesjcsj, jieswgsj, jieswxje, jiesshje, jiesfy, bz1, bz2, bz3
   </sql>

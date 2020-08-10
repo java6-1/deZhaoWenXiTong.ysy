@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.accp.dao.JiaoSeGongNengMapper" >
+  <resultMap id="BaseResultMap" type="com.accp.pojo.JiaoSeGongNeng" >
+    <id column="GJId" property="gjid" jdbcType="INTEGER" />
+    <result column="jiaoSeId" property="jiaoseid" jdbcType="INTEGER" />
+    <result column="caiDanId" property="caidanid" jdbcType="INTEGER" />
+    <result column="caozuo" property="caozuo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    GJId, jiaoSeId, caiDanId, caozuo
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from jiaosegongneng
+    where GJId = #{gjid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from jiaosegongneng
+    where GJId = #{gjid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.accp.pojo.JiaoSeGongNeng" >
+    insert into jiaosegongneng (GJId, jiaoSeId, caiDanId, 
+      caozuo)
+    values (#{gjid,jdbcType=INTEGER}, #{jiaoseid,jdbcType=INTEGER}, #{caidanid,jdbcType=INTEGER}, 
+      #{caozuo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.accp.pojo.JiaoSeGongNeng" >
+    insert into jiaosegongneng
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gjid != null" >
+        GJId,
+      </if>
+      <if test="jiaoseid != null" >
+        jiaoSeId,
+      </if>
+      <if test="caidanid != null" >
+        caiDanId,
+      </if>
+      <if test="caozuo != null" >
+        caozuo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gjid != null" >
+        #{gjid,jdbcType=INTEGER},
+      </if>
+      <if test="jiaoseid != null" >
+        #{jiaoseid,jdbcType=INTEGER},
+      </if>
+      <if test="caidanid != null" >
+        #{caidanid,jdbcType=INTEGER},
+      </if>
+      <if test="caozuo != null" >
+        #{caozuo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.JiaoSeGongNeng" >
+    update jiaosegongneng
+    <set >
+      <if test="jiaoseid != null" >
+        jiaoSeId = #{jiaoseid,jdbcType=INTEGER},
+      </if>
+      <if test="caidanid != null" >
+        caiDanId = #{caidanid,jdbcType=INTEGER},
+      </if>
+      <if test="caozuo != null" >
+        caozuo = #{caozuo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GJId = #{gjid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.accp.pojo.JiaoSeGongNeng" >
+    update jiaosegongneng
+    set jiaoSeId = #{jiaoseid,jdbcType=INTEGER},
+      caiDanId = #{caidanid,jdbcType=INTEGER},
+      caozuo = #{caozuo,jdbcType=VARCHAR}
+    where GJId = #{gjid,jdbcType=INTEGER}
+  </update>
+</mapper>
