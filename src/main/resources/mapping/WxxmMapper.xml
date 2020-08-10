@@ -11,17 +11,53 @@
     <result column="bzjia" property="bzjia" jdbcType="DECIMAL" />
     <result column="hyjia" property="hyjia" jdbcType="DECIMAL" />
     <result column="vipjia" property="vipjia" jdbcType="DECIMAL" />
-    <result column="xyijia" property="xyijia" jdbcType="DECIMAL" />
+    <result column="xyjia" property="xyjia" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
     wxxmId, wxtypeId, wxxmName, bz1, bz2, bz3
   </sql>
+  
+  
+  
+  <insert id="insertlist" parameterType="com.accp.pojo.Wxxm" >
+  	<if test="record.size()!=0">
+			insert into wxxm ( wxtypeId, wxxmName,bz1, bz2, bz3)
+            values 
+			<foreach separator="," collection="supplier.commod"
+				item="temp">
+				( #{temp.wxtypeid,jdbcType=INTEGER}, #{temp.wxxmname,jdbcType=VARCHAR}, 
+      				#{temp.bz1,jdbcType=INTEGER}, #{temp.bz2,jdbcType=INTEGER}, #{temp.bz3,jdbcType=INTEGER})
+			</foreach>
+			;
+	</if> 	
+  </insert>
+  
+  
+  
+  
+  
   
   <select id="select" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from wxxm
   </select>
+  
+   <select id="selectByP" resultMap="BaseResultMap"  >
+       SELECT * FROM `wxxm` WHERE 1=1
+       <if test="wxtypeid != null and wxtypeid != '' and  wxtypeid != 0 " >
+        and  `wxxm`.`wxtypeId` = #{wxtypeid}
+      </if> 
+  </select>
+
+ <update id="updateBy" parameterType="com.accp.pojo.Wxxm" >
+    update wxxm
+    set  bz1 = #{bz1,jdbcType=INTEGER}
+    where wxxmId = #{wxxmid,jdbcType=INTEGER}
+  </update>
+	
+
+  
   
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -60,6 +96,18 @@
       <if test="bz3 != null" >
         bz3,
       </if>
+      <if test="bzjia != null" >
+        bzjia,
+      </if>
+      <if test="hyjia != null" >
+        hyjia,
+      </if>
+      <if test="vipjia != null" >
+        vipjia,
+      </if>
+        <if test="xyjia != null" >
+        xyjia,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="wxxmid != null" >
@@ -80,6 +128,18 @@
       <if test="bz3 != null" >
         #{bz3,jdbcType=INTEGER},
       </if>
+          <if test="bzjia != null" >
+        #{bzjia,jdbcType=DECIMAL},
+      </if>
+          <if test="hyjia != null" >
+        #{hyjia,jdbcType=DECIMAL},
+      </if>
+          <if test="vipjia != null" >
+        #{vipjia,jdbcType=DECIMAL},
+      </if>
+          <if test="xyjia != null" >
+        #{xyjia,jdbcType=DECIMAL},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.accp.pojo.Wxxm" >
@@ -99,6 +159,18 @@
       </if>
       <if test="bz3 != null" >
         bz3 = #{bz3,jdbcType=INTEGER},
+      </if>
+              <if test="bzjia != null" >
+       bzjia= #{bzjia,jdbcType=DECIMAL},
+      </if>
+          <if test="hyjia != null" >
+       hyjia= #{hyjia,jdbcType=DECIMAL},
+      </if>
+          <if test="vipjia != null" >
+      vipjia=  #{vipjia,jdbcType=DECIMAL},
+      </if>
+          <if test="xyjia != null" >
+       xyjia= #{xyjia,jdbcType=DECIMAL},
       </if>
     </set>
     where wxxmId = #{wxxmid,jdbcType=INTEGER}

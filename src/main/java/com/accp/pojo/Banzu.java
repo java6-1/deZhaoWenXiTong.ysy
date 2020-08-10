@@ -1,5 +1,6 @@
 package com.accp.pojo;
 
+
 public class Banzu {
     private Integer bzid;
 

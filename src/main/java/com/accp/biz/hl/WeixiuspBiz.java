@@ -9,31 +9,35 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.WxxmMapper;
-import com.accp.pojo.Wxxm;
+import com.accp.dao.WeixiuspMapper;
+import com.accp.pojo.Weixiujl;
+import com.accp.pojo.Weixiusp;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-public class WxxmBiz {
+public class WeixiuspBiz {
 	@Autowired
-	private WxxmMapper wxxmMapper;
-	public List<Wxxm> selec(){
-		return wxxmMapper.select();
-	}
-	
-	
-	public List<Wxxm> selectByP(Integer wxtypeid){
-		return wxxmMapper.selectByP(wxtypeid);
-	}
+	private WeixiuspMapper weixiuspMapper;
 	
 	/*新增维修记录主表 */
 	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
-	public int updateBy(Integer bz1,Integer wxxmid) {
-		return wxxmMapper.updateBy(bz1,wxxmid);
+	public int insertSelective1(Weixiusp record) {
+		return weixiuspMapper.insert(record);
 	}
 	
+	/*删除维修记录主表 */
 	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
-	public int insertlist(List<Wxxm> record) {
-		return wxxmMapper.insertlist(record);
+	public int deleteByPrimaryKey(Integer weixiuspid) {
+		return weixiuspMapper.deleteByPrimaryKey(weixiuspid);
+	}
+	
+	
+	public List<Weixiusp> selectByKey(Integer weixiujlid){
+		return weixiuspMapper.selectByKey(weixiujlid);
+		
+	}
+	@Transactional(propagation = Propagation.REQUIRED, isolation =Isolation.READ_COMMITTED, readOnly = false)
+	public int insertlist(List<Weixiusp> record) {
+		return weixiuspMapper.insertlist(record);
 	}
 }

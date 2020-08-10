@@ -1,4 +1,6 @@
-package com.accp.biz.yj;
+package com.accp.biz.hl;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -6,18 +8,22 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.accp.dao.StaffMapper;
-import com.accp.pojo.Staff;
+import com.accp.dao.KhclMapper;
+import com.accp.pojo.Khcl;
 
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, isolation = Isolation.READ_COMMITTED, readOnly = true)
-public class staffBiz {
+public class KhclBiz {
 	@Autowired
-	private StaffMapper staffmapper;
-	public Staff selectuserl(String name, String password) {
-		return staffmapper.selectuserl(name, password);
+	private KhclMapper khclmapper;
+	
+	
+	public List<Khcl> select( String jiescph) {
+		 return khclmapper.select(jiescph);
 	}
-	public Staff selectuserPhone(String phone) {
-		return staffmapper.selectuserPhone(phone);
+	
+	
+	public Khcl selectByPrimaryKey(Integer khclid) {
+		return khclmapper.selectByPrimaryKey(khclid);
 	}
 }

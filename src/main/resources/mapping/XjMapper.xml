@@ -12,7 +12,40 @@
   <sql id="Base_Column_List" >
     xjId, xjName, xjTime, bz1, bz2, bz3
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <insert id="insertSelective" parameterType="com.accp.pojo.Xj" >
+    insert into xj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xjid != null" >
+        xjId,
+      </if>
+      
+      <if test="xjname != null" >
+        xjName,
+      </if>
+      <if test="xjtime != null" >
+        xjTime,
+      </if>
+      <if test="xjfei != null" >
+        xjTime,
+      </if>
+     
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xjid != null" >
+        #{xjid,jdbcType=INTEGER},
+      </if>
+      <if test="xjname != null" >
+        #{xjname,jdbcType=VARCHAR},
+      </if>
+      <if test="xjtime != null" >
+        #{xjtime,jdbcType=DECIMAL},
+      </if>
+      <if test="xjfei != null" >
+      #{xjTime,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+ <!--  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from xj
@@ -100,5 +133,5 @@
       bz2 = #{bz2,jdbcType=INTEGER},
       bz3 = #{bz3,jdbcType=INTEGER}
     where xjId = #{xjid,jdbcType=INTEGER}
-  </update>
+  </update> -->
 </mapper>

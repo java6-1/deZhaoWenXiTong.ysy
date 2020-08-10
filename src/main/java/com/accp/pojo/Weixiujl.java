@@ -5,6 +5,8 @@ import java.util.Date;
 public class Weixiujl {
     private Integer weixiujlid;
 
+    private String khclph;
+
     private Integer khclid;
 
     private String weixiujlbm;
@@ -39,13 +41,13 @@ public class Weixiujl {
 
     private Date starttime;
 
-    private Date endstart;
+    private String khclcp;
 
-    private Integer bz1;
+    private String clzr;
 
-    private Integer bz2;
+    private String cljsy;
 
-    private Integer bz3;
+    private String clpp;
 
     public Integer getWeixiujlid() {
         return weixiujlid;
@@ -53,6 +55,14 @@ public class Weixiujl {
 
     public void setWeixiujlid(Integer weixiujlid) {
         this.weixiujlid = weixiujlid;
+    }
+
+    public String getKhclph() {
+        return khclph;
+    }
+
+    public void setKhclph(String khclph) {
+        this.khclph = khclph == null ? null : khclph.trim();
     }
 
     public Integer getKhclid() {
@@ -191,35 +201,47 @@ public class Weixiujl {
         this.starttime = starttime;
     }
 
-    public Date getEndstart() {
-        return endstart;
+    public String getKhclcp() {
+        return khclcp;
     }
 
-    public void setEndstart(Date endstart) {
-        this.endstart = endstart;
+    public void setKhclcp(String khclcp) {
+        this.khclcp = khclcp == null ? null : khclcp.trim();
     }
 
-    public Integer getBz1() {
-        return bz1;
+    public String getClzr() {
+        return clzr;
     }
 
-    public void setBz1(Integer bz1) {
-        this.bz1 = bz1;
+    public void setClzr(String clzr) {
+        this.clzr = clzr == null ? null : clzr.trim();
     }
 
-    public Integer getBz2() {
-        return bz2;
+    public String getCljsy() {
+        return cljsy;
     }
 
-    public void setBz2(Integer bz2) {
-        this.bz2 = bz2;
+    public void setCljsy(String cljsy) {
+        this.cljsy = cljsy == null ? null : cljsy.trim();
     }
 
-    public Integer getBz3() {
-        return bz3;
+    public String getClpp() {
+        return clpp;
     }
 
-    public void setBz3(Integer bz3) {
-        this.bz3 = bz3;
+    public void setClpp(String clpp) {
+        this.clpp = clpp == null ? null : clpp.trim();
     }
+
+	@Override
+	public String toString() {
+		return "Weixiujl [weixiujlid=" + weixiujlid + ", khclph=" + khclph + ", khclid=" + khclid + ", weixiujlbm="
+				+ weixiujlbm + ", weixiujlname=" + weixiujlname + ", weixiujlpice=" + weixiujlpice + ", weixiujlhyj="
+				+ weixiujlhyj + ", weixiujlvipj=" + weixiujlvipj + ", weixiujlxyj=" + weixiujlxyj + ", weixiujlbz="
+				+ weixiujlbz + ", weixiujlzt=" + weixiujlzt + ", weixiujlfg=" + weixiujlfg + ", weixiuzrr=" + weixiuzrr
+				+ ", weixiucfje=" + weixiucfje + ", weixiucgcs=" + weixiucgcs + ", weixiutype=" + weixiutype
+				+ ", weixiulic=" + weixiulic + ", weixiujg=" + weixiujg + ", starttime=" + starttime + ", khclcp="
+				+ khclcp + ", clzr=" + clzr + ", cljsy=" + cljsy + ", clpp=" + clpp + "]";
+	}
+    
 }

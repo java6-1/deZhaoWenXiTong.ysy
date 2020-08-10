@@ -1,5 +1,6 @@
 package com.accp.pojo;
 
+
 public class Chexing {
     private Integer chexingid;
 
@@ -15,7 +16,14 @@ public class Chexing {
 
     private String chexingfdjname;
 
-    private Integer bz1;
+    @Override
+	public String toString() {
+		return "Chexing [chexingid=" + chexingid + ", clppid=" + clppid + ", fdjpp=" + fdjpp + ", khclpp=" + khclpp
+				+ ", chexingname=" + chexingname + ", chexingpice=" + chexingpice + ", chexingfdjname=" + chexingfdjname
+				+ ", bz1=" + bz1 + ", bz2=" + bz2 + ", bz3=" + bz3 + "]";
+	}
+
+	private Integer bz1;
 
     private Integer bz2;
 
