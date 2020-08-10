@@ -60,7 +60,7 @@ public class staffAction {
 		@GetMapping("/denglu2")
 		public Staff delu2() {
 		Staff us  =(Staff)SecurityUtils.getSubject().getSession().getAttribute("USERS");
-		System.out.println("获取用户名"+JSON.toJSONString(us));
+		System.out.println("获取用户名1"+JSON.toJSONString(us));
 		return us;
 	}
 		//获取该用户菜单
