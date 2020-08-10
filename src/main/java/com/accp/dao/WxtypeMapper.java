@@ -2,6 +2,9 @@ package com.accp.dao;
 
 import java.util.List;
 
+
+import org.apache.ibatis.annotations.Select;
+
 import com.accp.pojo.Wxtype;
 
 public interface WxtypeMapper {
@@ -20,4 +23,7 @@ public interface WxtypeMapper {
     int updateByPrimaryKeySelective(Wxtype record);
 
     int updateByPrimaryKey(Wxtype record);
+    
+    @Select("select * from wxtype")
+    public List<Wxtype> List();
 }

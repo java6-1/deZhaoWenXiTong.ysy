@@ -2,6 +2,10 @@ package com.accp.pojo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Staff {
 	private JiaoSe jiaose;
     public JiaoSe getJiaose() {
@@ -53,7 +57,8 @@ public class Staff {
     private String staff;
 
     private Date entrytime;
-
+    
+    @JsonFormat(pattern = ("yyyy-MM-dd"))
     private String dimissiontime;
 
     private String cause;
@@ -70,12 +75,23 @@ public class Staff {
     
     private String sectionbh;
     
+    private String postname;
+    
     private double xjfei;
     
     
     
     public double getXjfei() {
 		return xjfei;
+	}
+
+
+    public String getPostname() {
+		return postname;
+	}
+
+	public void setPostname(String postname) {
+		this.postname = postname;
 	}
 
 	public void setXjfei(double xjfei) {

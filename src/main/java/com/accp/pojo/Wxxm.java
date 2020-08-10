@@ -19,11 +19,20 @@ public class Wxxm {
     
     private Double vipjia;
     
-    private Double xyijia;
+    private Double xyjia;
+    
+    private String wxtypeName;
     
     
-    
-    public Double getBzjia() {
+    public String getWxtypeName() {
+		return wxtypeName;
+	}
+
+	public void setWxtypeName(String wxtypeName) {
+		this.wxtypeName = wxtypeName;
+	}
+
+	public Double getBzjia() {
 		return bzjia;
 	}
 
@@ -47,12 +56,12 @@ public class Wxxm {
 		this.vipjia = vipjia;
 	}
 
-	public Double getXyijia() {
-		return xyijia;
+	public Double getXyjia() {
+		return xyjia;
 	}
 
-	public void setXyijia(Double xyijia) {
-		this.xyijia = xyijia;
+	public void setXyjia(Double xyjia) {
+		this.xyjia = xyjia;
 	}
 
 	public Integer getWxxmid() {

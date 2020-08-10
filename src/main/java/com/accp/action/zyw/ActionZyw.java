@@ -40,4 +40,8 @@ public class ActionZyw {
 		 biz.del(ppid);
 		return 1;
 	}
+	@GetMapping("/ppjiaz")
+	public Object j() {
+		return biz.query();
+	}
 }

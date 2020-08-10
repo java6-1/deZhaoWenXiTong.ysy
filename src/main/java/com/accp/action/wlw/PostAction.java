@@ -1,6 +1,7 @@
 package com.accp.action.wlw;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -72,5 +73,12 @@ public class PostAction {
 		message.put("code", "200");
 		message.put("msg", "ok");
 		return message;	
+	}
+	
+	//查询全部的信息
+	@GetMapping("queryPosts")
+	public List<Post> queryByPosts(){
+		List<Post> list = postBiz.queryByPosts();
+		return list;
 	}
 }
