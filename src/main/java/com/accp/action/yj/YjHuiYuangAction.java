@@ -113,7 +113,7 @@ public class YjHuiYuangAction {
 				PageInfo<Jies> page =hyBiz.selectJiesJiePage(pageNum, pageSize, chePaiHao);
 				map.put("data", page);
 				map.put("code", "200");
-				System.out.println("结算32" + JSON.toJSONString(page));
+				System.out.println("结算2" + JSON.toJSONString(page));
 			} catch (Exception e) {
 				map.put("code", "400");
 				e.printStackTrace();
