@@ -22,4 +22,5 @@ public interface HuiYuangMapper {
 		//充值会员
 		@Update("UPDATE `huiyuang` SET `jiFen`=#{jifen} where`huiYuanId`=#{hyid}")
 		int selectHuiYuangCZ(@Param("jifen")double jifen,@Param("hyid")Integer hyid);
+		
 }

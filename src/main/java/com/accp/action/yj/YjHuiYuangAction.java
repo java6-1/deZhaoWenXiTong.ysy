@@ -120,4 +120,18 @@ public class YjHuiYuangAction {
 			}
 			return map;
 		}
+	//查询结算项目
+		@GetMapping("/yjSelectJsxm/{jiesId}")
+		public Map<String, Object> yjSelectJsxm(@PathVariable String jiesId) {
+			System.out.println(jiesId);
+			Map<String, Object> map = new HashMap<String, Object>();
+			try {		
+				map.put("data", hyBiz.yjSelectJsxm(jiesId));
+					map.put("code", "200");
+			} catch (Exception e) {
+				map.put("code", "400");
+				e.printStackTrace();
+			}
+			return map;
+		}
 }

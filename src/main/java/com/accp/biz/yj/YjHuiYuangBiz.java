@@ -1,6 +1,7 @@
 package com.accp.biz.yj;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import com.accp.dao.HuiYuangMapper;
 import com.accp.dao.JiesMapper;
 import com.accp.pojo.HuiYuang;
 import com.accp.pojo.Jies;
+import com.accp.pojo.Jsxm;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 @Service
@@ -68,5 +70,9 @@ public class YjHuiYuangBiz  {
 		public PageInfo<Jies> selectJiesJiePage(Integer pageNum,Integer pageSize,String chePaiHao){
 			PageHelper.startPage(pageNum, pageSize);
 			return new PageInfo<Jies>(jsmapper.selectJiesJiePage(chePaiHao));
+		}
+	//查询结算项目
+		public List<Jsxm> yjSelectJsxm(String jiesId){
+			return jsmapper.yjSelectJsxm(jiesId);
 		}
 }
