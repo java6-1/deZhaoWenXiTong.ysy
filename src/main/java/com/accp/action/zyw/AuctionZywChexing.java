@@ -37,5 +37,10 @@ public class AuctionZywChexing {
 	public Object sc(Integer cheid ) {
 		return biz.dels(cheid);
 	}
+	@PostMapping("/updatechexing")
+	public Object updatechexing(Chexing chexing) {
+	   biz.updatechexing(chexing);
+		return 1;
+	}
 	
 }

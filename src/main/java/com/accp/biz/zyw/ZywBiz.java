@@ -39,6 +39,10 @@ public class ZywBiz {
 	public int ins(Clpp clpp) {
 		return clppmapper.insertSelective(clpp);
 	}
+	
+	public int updatechexing(Chexing cx) {
+		return chexingmapper.updateByPrimaryKeySelective(cx);
+	}
 	public int inschexing(Chexing clpp) {
 		return chexingmapper.insertSelective(clpp);
 	}
