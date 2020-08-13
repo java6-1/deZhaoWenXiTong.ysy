@@ -14,10 +14,13 @@ import com.accp.pojo.Staff;
 public class staffBiz {
 	@Autowired
 	private StaffMapper staffmapper;
-	public Staff selectuserl(String name, String password) {
-		return staffmapper.selectuserl(name, password);
+	public Staff selectuserl(String name) {
+		return staffmapper.selectuserl(name);
 	}
 	public Staff selectuserPhone(String phone) {
 		return staffmapper.selectuserPhone(phone);
+	}
+	public Staff yjSelectCaiDan(String name) {
+		return staffmapper.yjSelectCaiDan(name);
 	}
 }

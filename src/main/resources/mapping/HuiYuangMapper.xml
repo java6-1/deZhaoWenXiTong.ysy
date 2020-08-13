@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.HuiYuangMapper">
+	<!-- 会员分页 -->
+	<select id="selectHuiYuangPage"
+		resultType="com.accp.pojo.HuiYuang">
+		SELECT *FROM `huiyuang`
+		WHERE 1+1
+		<if test="sousuo!=null and sousuo!=''">
+			and `phone` LIKE "%"#{sousuo}"%"
+		</if>
+		ORDER BY `ri` DESC
+	</select>
+	<!-- 新增会员 -->
+	<insert id="insertHuiYuan">
+		INSERT INTO `huiyuang` values
+		(0,#{hy.phone},#{hy.huiyuanname},#{hy.huiyuanpwd},#{hy.ri},#{hy.jifen})
+	</insert>
+	<!--删除会员  -->
+	<delete id="deleteHuiYuangId">
+		delete from huiyuang where huiYuanId=#{hyid}
+	</delete>
+	<!-- 查询会员金额 -->
+	<select id="selectHuiYuangJiFenId" resultType="double">
+		select jiFen from huiyuang where huiYuanId=#{hyid}
+	</select>
+</mapper>

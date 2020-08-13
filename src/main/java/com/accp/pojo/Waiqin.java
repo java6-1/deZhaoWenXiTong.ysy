@@ -20,8 +20,20 @@ public class Waiqin {
     private Integer bz2;
 
     private Integer bz3;
+    
+    private String bzname;
+    
+    
 
-    public Integer getWaiqinid() {
+    public String getBzname() {
+		return bzname;
+	}
+
+	public void setBzname(String bzname) {
+		this.bzname = bzname;
+	}
+
+	public Integer getWaiqinid() {
         return waiqinid;
     }
 

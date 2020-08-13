@@ -6,8 +6,16 @@ public class Jies {
     private Integer jiesid;
 
     private Integer khclid;
+    private String jiescph;
+    public String getJiescph() {
+		return jiescph;
+	}
 
-    private Date jiesjcsj;
+	public void setJiescph(String jiescph) {
+		this.jiescph = jiescph;
+	}
+
+	private Date jiesjcsj;
 
     private Date jieswgsj;
 
