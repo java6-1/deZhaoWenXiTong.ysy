@@ -8,8 +8,16 @@ public class JiaoSeGongNeng {
     private Integer caidanid;
 
     private String caozuo;
+    private String dengji;
+    public String getDengji() {
+		return dengji;
+	}
 
-    public Integer getGjid() {
+	public void setDengji(String dengji) {
+		this.dengji = dengji;
+	}
+
+	public Integer getGjid() {
         return gjid;
     }
 

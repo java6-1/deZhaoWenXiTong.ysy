@@ -18,12 +18,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.accp.biz.yj.staffBiz;
 import com.accp.pojo.CaiDan;
-
+import com.accp.pojo.ScCaiDan;
 import com.accp.pojo.Staff;
 
 import com.accp.utils.PhoneCode;
@@ -116,5 +119,38 @@ public class staffAction {
 		}
 		return map;
 	}
+	//查看用户权限
 	
+	@GetMapping("/yjSelectQuanXiang/{staffid}")
+	public Map<String, Object> yjSelectQuanXiang(@PathVariable String staffid) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			map.put("data",staffmapper.yjSelectQuanXiang(staffid));
+			map.put("code", "200");
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
+		}
+		return map;
+	}
+	//修改用户权限
+	
+	@PutMapping("/updateByPrimaryKeySelective")
+	@ResponseBody
+	public Map<String, Object> updateByPrimaryKeySelective(@RequestBody ScCaiDan caiDanList) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			
+		System.out.println("菜单集合:"+JSON.toJSONString(caiDanList));
+		staffmapper.yjDeleteQuangx(caiDanList.getId());
+		for (Object item : caiDanList.getArrc()) {
+			staffmapper.yjInsertQuangx(caiDanList.getId(), item.toString(), "r");
+		}
+			map.put("code", "200");
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
+		}
+		return map;
+	}
 }
