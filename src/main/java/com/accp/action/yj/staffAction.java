@@ -141,7 +141,7 @@ public class staffAction {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
 			
-		System.out.println("菜单集合:"+JSON.toJSONString(caiDanList));
+		System.out.println("菜单集合2:"+JSON.toJSONString(caiDanList));
 		staffmapper.yjDeleteQuangx(caiDanList.getId());
 		for (Object item : caiDanList.getArrc()) {
 			staffmapper.yjInsertQuangx(caiDanList.getId(), item.toString(), "r");
