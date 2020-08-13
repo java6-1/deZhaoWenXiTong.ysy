@@ -56,6 +56,27 @@ public class YjHuiYuangAction {
 		return map;
 	}
 
+	// 查询单个会员
+	@PostMapping("/yjSeleteHuiYuang/{phone}/{huiyuanpwd}")
+	public Map<String, Object> yjSeleteHuiYuang(@PathVariable String phone, @PathVariable String huiyuanpwd) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			HuiYuang huiYuang = hyBiz.yjSeleteHuiYuang(phone, huiyuanpwd);
+			System.out.println(huiYuang);
+			map.put("data", huiYuang);
+			if (null == huiYuang) {
+				map.put("code", "202");
+			} else {
+				map.put("code", "200");
+			}
+
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
+		}
+		return map;
+	}
+
 	// 充值会员
 	@RequiresRoles("超级管理员")
 	@GetMapping("/selectHuiYuangCZ/{jifen}/{hyid}")
@@ -90,12 +111,13 @@ public class YjHuiYuangAction {
 		}
 		return map;
 	}
+
 	// 分页查询未结算
 	@PostMapping("/selectJiesWeiPage")
 	public Map<String, Object> selectJiesWeiPage(Integer pageNum, Integer pageSize, String chePaiHao) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		try {
-			PageInfo<Jies> page =hyBiz.selectJiesWeiPage(pageNum, pageSize, chePaiHao);
+			PageInfo<Jies> page = hyBiz.selectJiesWeiPage(pageNum, pageSize, chePaiHao);
 			map.put("data", page);
 			map.put("code", "200");
 			System.out.println("结算" + JSON.toJSONString(page));
@@ -105,33 +127,65 @@ public class YjHuiYuangAction {
 		}
 		return map;
 	}
-	//分页查询结算
-		@PostMapping("/selectJiesJiePage")
-		public Map<String, Object> selectJiesJiePage(Integer pageNum, Integer pageSize, String chePaiHao) {
-			Map<String, Object> map = new HashMap<String, Object>();
-			try {
-				PageInfo<Jies> page =hyBiz.selectJiesJiePage(pageNum, pageSize, chePaiHao);
-				map.put("data", page);
-				map.put("code", "200");
-				System.out.println("结算2" + JSON.toJSONString(page));
-			} catch (Exception e) {
-				map.put("code", "400");
-				e.printStackTrace();
-			}
-			return map;
+
+	// 分页查询结算
+	@PostMapping("/selectJiesJiePage")
+	public Map<String, Object> selectJiesJiePage(Integer pageNum, Integer pageSize, String chePaiHao) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			PageInfo<Jies> page = hyBiz.selectJiesJiePage(pageNum, pageSize, chePaiHao);
+			map.put("data", page);
+			map.put("code", "200");
+			System.out.println("结算2" + JSON.toJSONString(page));
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
 		}
-	//查询结算项目
-		@GetMapping("/yjSelectJsxm/{jiesId}")
-		public Map<String, Object> yjSelectJsxm(@PathVariable String jiesId) {
-			System.out.println(jiesId);
-			Map<String, Object> map = new HashMap<String, Object>();
-			try {		
-				map.put("data", hyBiz.yjSelectJsxm(jiesId));
-					map.put("code", "200");
-			} catch (Exception e) {
-				map.put("code", "400");
-				e.printStackTrace();
-			}
-			return map;
+		return map;
+	}
+
+	// 查询结算项目
+	@GetMapping("/yjSelectJsxm/{jiesId}")
+	public Map<String, Object> yjSelectJsxm(@PathVariable String jiesId) {
+		System.out.println(jiesId);
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			map.put("data", hyBiz.yjSelectJsxm(jiesId));
+			map.put("code", "200");
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
 		}
+		return map;
+	}
+
+	// 会员结算项目
+	@GetMapping("/updateHuiYuang/{huiyuanid}/{jieSuanHouManey}/{jieSuangid}/{zhekoujia}")
+	public Map<String, Object> updateHuiYuang(@PathVariable String huiyuanid, @PathVariable String jieSuanHouManey,
+			@PathVariable String jieSuangid, @PathVariable String zhekoujia) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			hyBiz.updateHuiYuangManey(jieSuanHouManey, huiyuanid);
+			hyBiz.updateJiesZhuaiTai(zhekoujia, jieSuangid);
+			map.put("code", "200");
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
+		}
+		return map;
+	}
+
+	// 非结算项目
+	@GetMapping("/updateFeiHuiYuang/{jieSuangid}/{yingshou}")
+	public Map<String, Object> updateFeiHuiYuang(@PathVariable String jieSuangid, @PathVariable String yingshou) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		try {
+			hyBiz.updateJiesZhuaiTai(yingshou, jieSuangid);
+			map.put("code", "200");
+		} catch (Exception e) {
+			map.put("code", "400");
+			e.printStackTrace();
+		}
+		return map;
+	}
 }
