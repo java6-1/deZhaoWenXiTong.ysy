@@ -25,7 +25,7 @@ public class AuctionZywChexing {
 			name="%"+name+"%";
 		}
 
-		return biz.queryByChe(pageNum,name,szm,size);
+		return biz.queryByChe(pageNum,name,szm,size); 
 	}
 	@PostMapping("/inschexing")
 	public Object insert(Chexing chexing) {
