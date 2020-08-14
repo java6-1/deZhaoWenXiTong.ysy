@@ -31,7 +31,7 @@ public class BanzuAction {
 	@GetMapping("queryByBanzu/{pageNum}/{pageSize}")
 	public PageInfo<Staff> queryByBanzu(@PathVariable Integer pageNum, @PathVariable Integer pageSize) {
 		System.out.println("进入yixia1");
-		System.out.println("qqq");
+		System.out.println("qqqa");
 		return banziBiz.queryByBanzu(pageNum, pageSize);
 	}
 }
