@@ -17,7 +17,7 @@
     <include refid="Base_Column_List" />
     from clpp
   </select>
-<!--   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from clpp
@@ -105,5 +105,5 @@
       bz2 = #{bz2,jdbcType=INTEGER},
       bz3 = #{bz3,jdbcType=INTEGER}
     where clppID = #{clppid,jdbcType=INTEGER}
-  </update> -->
+  </update> 
 </mapper>

@@ -24,6 +24,7 @@ public class ActionZyw {
 	
 	@PostMapping("/ins")
 	public Object insert(Clpp clpp) {
+		System.out.println(clpp.getClppname());
 	biz.ins(clpp);
 		return 1;
 	}

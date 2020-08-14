@@ -25,8 +25,8 @@ public class AuctionZywChexing {
 			name="%"+name+"%";
 		}
 
-		return biz.queryByChe(pageNum,name,szm,size); 
-	}
+		return biz.queryByChe(pageNum,name,szm,size);
+	} 
 	@PostMapping("/inschexing")
 	public Object insert(Chexing chexing) {
 		System.out.println(chexing.toString());
@@ -36,12 +36,6 @@ public class AuctionZywChexing {
 	@GetMapping("/scchexing")
 	public Object sc(Integer cheid ) {
 		return biz.dels(cheid);
-	}
-	@PostMapping("/updatechexing")
-	public Object updatechexing(Chexing chexing) {
-	   biz.updatechexing(chexing);
-	    
-		return 1;
 	}
 	
 }
