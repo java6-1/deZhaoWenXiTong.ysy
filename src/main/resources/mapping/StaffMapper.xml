@@ -3,10 +3,9 @@
 <mapper namespace="com.accp.dao.StaffMapper">
 <!-- 四表联查关系映射 -->
 	<resultMap id="BaseResultMap" type="com.accp.pojo.Staff">
-	<result column="staffName" property="staffname"
+		<result column="staffName" property="staffname"
 			jdbcType="VARCHAR" />
-		<result column="staffId" property="staffid"
-			jdbcType="INTEGER" />
+		<result column="staffId" property="staffid" jdbcType="INTEGER" />
 		<result column="staffAccount" property="staffaccount"
 			jdbcType="VARCHAR" />
 		<result column="staffPawss" property="staffpawss"
@@ -17,16 +16,21 @@
 	<resultMap type="com.accp.pojo.JiaoSe" id="JiaoSeMap">
 		<id column="jiaoSeId" property="jiaoseid" jdbcType="INTEGER" />
 		<result column="biaoshi" property="biaoshi" jdbcType="VARCHAR" />
-		<result column="jiaoSeName" property="jiaosename" jdbcType="VARCHAR" />
+		<result column="jiaoSeName" property="jiaosename"
+			jdbcType="VARCHAR" />
 
-		<collection property="listCaiDan" ofType="com.accp.pojo.CaiDan">
+		<collection property="listCaiDan"
+			ofType="com.accp.pojo.CaiDan">
 			<id column="caiDanId" property="caidanid" jdbcType="INTEGER" />
-			<result column="menuName" property="menuname" jdbcType="VARCHAR" />
-			  <result column="caiDanIdFu" property="caidanidfu" jdbcType="INTEGER" />
+			<result column="menuName" property="menuname"
+				jdbcType="VARCHAR" />
+			<result column="caiDanIdFu" property="caidanidfu"
+				jdbcType="INTEGER" />
 			<result column="pageUrl" property="pageurl" jdbcType="VARCHAR" />
 			<result column="dengJi" property="dengji" jdbcType="INTEGER" />
 			<result column="caozuo" property="caozuo" jdbcType="VARCHAR" />
-			<result column="controllerAction" property="controlleraction" jdbcType="VARCHAR" />
+			<result column="controllerAction" property="controlleraction"
+				jdbcType="VARCHAR" />
 			<association property="fuCaiDan" column="caiDanIdFu"
 				select="selectFuCaiDan"></association>
 		</collection>
@@ -49,6 +53,14 @@
 		c ON c.jiaoSeId=b.jiaoSeId
 		JOIN `caidan` d ON c.caiDanId=d.caiDanId
 		WHERE a.`staffAccount`=#{name}
+	</select>
+	<select id="yjSelectQuanXiang" resultType="java.lang.Integer">
+		SELECT c.`caiDanId` FROM `staff` a
+		JOIN `jiaose` b ON a.`bz1`=b.`jiaoSeId`
+		JOIN `jiaosegongneng` c ON b.`jiaoSeId`=c.`jiaoSeId`
+		JOIN `caidan` d ON d.`caiDanId`=c.`caiDanId`
+		WHERE a.`staffID`=#{staffid} AND d.`dengJi`=3
+
 	</select>
 	<!--查询技工星级 -->
 	<select id="selecBybzj" resultMap="BaseResultMap"> SELECT * FROM `staff` INNER

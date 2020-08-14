@@ -18,7 +18,16 @@ public interface StaffMapper {
     Staff selectuserPhone(@Param("staff")String staff);
     //查询用户权限
     Staff yjSelectCaiDan(@Param("name")String name);
-    
+    //查询用户权限
+    List<Integer> yjSelectQuanXiang(@Param("staffid")String staffid);
+    //删除用户权限
+    @Delete("DELETE FROM jiaosegongneng WHERE `jiaoSeId`=#{jiaoSeId} AND `dengji`=3")
+    int yjDeleteQuangx(@Param("jiaoSeId")String jiaoSeId);
+    //新增用户权限
+    @Insert("INSERT INTO `jiaosegongneng` VALUES\r\n" + 
+    		"(0,#{jiaoSeId},#{caiDanId},#{caozuo},3)")
+    int yjInsertQuangx(@Param("jiaoSeId")String jiaoSeId,@Param("caiDanId")String caiDanId,
+    		@Param("caozuo")String caozuo);
     //查询全部wlw
     @Select("select * from staff  INNER JOIN section ON section.`sectionbh`=staff.`sectionID` where state=0")
     List<Staff> queryStaff();
