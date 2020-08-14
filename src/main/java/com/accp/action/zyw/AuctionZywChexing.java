@@ -40,6 +40,7 @@ public class AuctionZywChexing {
 	@PostMapping("/updatechexing")
 	public Object updatechexing(Chexing chexing) {
 	   biz.updatechexing(chexing);
+	    System.out.println();
 		return 1;
 	}
 	
