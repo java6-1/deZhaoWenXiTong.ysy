@@ -44,7 +44,7 @@ public interface StaffMapper {
     
     
     //新增员工
-    @Insert("insert into staff(postid,staffname,staffsex,tstore,sectionid,education,edtype,school,specialty,sfid,yhdz,xjdz,staff,entrytime)values(#{postid},#{staffname},#{staffsex},#{tstore},#{sectionid},#{education},#{edtype},#{school},#{specialty},#{sfid},#{yhdz},#{xjdz},#{staff},#{entrytime})")
+    @Insert("insert into staff(postid,bzid,staffname,staffsex,tstore,sectionid,education,edtype,school,specialty,sfid,yhdz,xjdz,staff,entrytime,state)values(#{postid},#{bzid},#{staffname},#{staffsex},#{tstore},#{sectionid},#{education},#{edtype},#{school},#{specialty},#{sfid},#{yhdz},#{xjdz},#{staff},#{entrytime},0)")
     int addStaff(Staff staff);
 
     //删除员工

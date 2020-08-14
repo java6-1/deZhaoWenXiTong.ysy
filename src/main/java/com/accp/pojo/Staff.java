@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Staff {
 	private JiaoSe jiaose;
+	
     public JiaoSe getJiaose() {
 		return jiaose;
 	}
@@ -79,9 +80,18 @@ public class Staff {
     
     private double xjfei;
     
+    private String bzname;
     
     
-    public double getXjfei() {
+    public String getBzname() {
+		return bzname;
+	}
+
+	public void setBzname(String bzname) {
+		this.bzname = bzname;
+	}
+
+	public double getXjfei() {
 		return xjfei;
 	}
 

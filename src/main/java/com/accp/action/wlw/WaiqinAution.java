@@ -71,4 +71,6 @@ public class WaiqinAution {
 		Waiqin waiqin = waiqinBizs.queryBywaiqinid(waiqinid);
 		return waiqin;
 	}
+	
+	
 }
