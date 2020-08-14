@@ -18,8 +18,12 @@ public class Auctionghdw {
 	Bizghdw biz;
 	
 	@GetMapping("/ghdwquery")
-	public Object query(Integer pageNum,String wxdz) {
-		return biz.list(pageNum, wxdz);
+	public Object query(Integer pageNum,String wxdz,String gwdwname) {
+		if(gwdwname.equals("undefined")) {
+			gwdwname=null;
+		}
+		System.out.println(gwdwname);
+		return biz.list(pageNum, wxdz,gwdwname);
 	}
 	
 	@GetMapping("/ghdwdel")

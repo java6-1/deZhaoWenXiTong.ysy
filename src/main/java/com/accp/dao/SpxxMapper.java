@@ -1,5 +1,11 @@
 package com.accp.dao;
 
+
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Select;
+
 import com.accp.pojo.Spxx;
 
 public interface SpxxMapper {
@@ -15,4 +21,9 @@ public interface SpxxMapper {
 
     int updateByPrimaryKey(Spxx record);
     
+
+    @Select("<script>select * from spxx where 1=1 "
+    		+ " <if test=\" name !=null and name !=''  \">AND jsxmname = #{name} </if> </script> ")
+    List<Spxx> query(String name);
+
 }

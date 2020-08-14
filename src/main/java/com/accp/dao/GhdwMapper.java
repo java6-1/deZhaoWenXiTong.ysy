@@ -19,6 +19,6 @@ public interface GhdwMapper {
 
     int updateByPrimaryKey(Ghdw record);
     
-    @Select("<script>SELECT * FROM `ghdw` where 1=1 <if test=\" ghdwpawss !=null and ghdwpawss !=''  \">and ghdwpawss = #{ghdwpawss}</if> </script>")
-    List<Ghdw> query(String ghdwpawss);
+    @Select("<script>SELECT * FROM `ghdw` where 1=1 <if test=\" ghdwpawss !=null and ghdwpawss !=''  \">and ghdwpawss = #{ghdwpawss}</if> <if test=\" gwdwname!=null and gwdwname!='' \">and ghdwname = #{gwdwname} </if> </script>")
+    List<Ghdw> query(String ghdwpawss,String gwdwname);
 }
